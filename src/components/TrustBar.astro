@@ -1,0 +1,160 @@
+---
+---
+
+<section class="trust-bar" id="metrics">
+  <div class="container">
+    <div class="metrics-card">
+      <div class="metrics-row">
+        
+        <div class="trust-item reveal-item">
+          <h2 class="counter-val">
+            <span class="font-secondary">TRUSTED</span>
+          </h2>
+          <h4 class="trust-title font-secondary">BY GLOBAL INVESTORS</h4>
+          <div class="blue-separator"></div>
+          <p class="trust-desc">Entrusted by worlds most respected institutions, Family offices & UHNI</p>
+        </div>
+
+        <div class="trust-item reveal-item">
+          <h2 class="counter-val">
+            <span class="counter" data-target="20">0</span>
+            <span class="font-secondary">+ YEARS</span>
+          </h2>
+          <h4 class="trust-title font-secondary">CREATING WEALTH</h4>
+          <div class="blue-separator"></div>
+          <p class="trust-desc">Compounding Capital Since 2005</p>
+        </div>
+
+        <div class="trust-item reveal-item">
+          <h2 class="counter-val">
+            <span class="font-secondary">EMPLOYEE</span>
+          </h2>
+          <h4 class="trust-title font-secondary">OWNED</h4>
+          <div class="blue-separator"></div>
+          <p class="trust-desc">Zero Conflict of Interest with focus on investment management only</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .trust-bar {
+    background-color: transparent; /* Changed from white to allow overlap effect */
+    position: relative;
+    z-index: 10;
+    margin-top: -100px; /* Pull it up to overlap the previous section */
+    padding-bottom: 6rem;
+  }
+
+  .metrics-card {
+    background-color: #ffffff;
+    border-radius: 0; /* Sharp corners */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); /* Soft drop shadow */
+    padding: 3.5rem 2rem;
+  }
+
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .trust-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .counter-val {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: #9acb32; /* Lime green */
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .counter, .counter-val span {
+    color: #9acb32; /* Lime green */
+  }
+
+  .trust-title {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #9acb32; /* Lime green */
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .blue-separator {
+    height: 2px;
+    background-color: #72a4d4; /* Soft blue line */
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto 1.5rem auto;
+  }
+
+  .trust-desc {
+    color: #333333;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: 400;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const counters = document.querySelectorAll('.counter');
+
+  counters.forEach(counter => {
+    const target = parseFloat(counter.getAttribute('data-target') || '0');
+    
+    ScrollTrigger.create({
+      trigger: counter,
+      start: "top 90%",
+      onEnter: () => {
+        gsap.to(counter, {
+          innerHTML: target,
+          duration: 2,
+          snap: { innerHTML: 1 },
+          ease: "power2.out"
+        });
+      },
+      once: true
+    });
+  });
+
+  gsap.utils.toArray('.trust-bar .reveal-item').forEach((item: any) => {
+    gsap.fromTo(item,
+      { y: 30, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 90%",
+        }
+      }
+    );
+  });
+</script>

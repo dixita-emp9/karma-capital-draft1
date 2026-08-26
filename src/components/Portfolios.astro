@@ -1,0 +1,282 @@
+---
+const portfolios = [
+  {
+    num: "01",
+    title: "Portfolio Management Services (PMS)",
+    desc: "Customized equity portfolios managed to specific investment approaches. Direct ownership of securities. Real-time portfolio transparency. Periodic reporting.",
+    approaches: ["Karma Wealth Builder", "Lotus Strategy", "Magnolia Strategy"],
+    cta: "EXPLORE PMS Offerings",
+    link: "#",
+    image: "/images/portfolio_1.jpg",
+    layout: "img-left",
+  },
+  {
+    num: "02",
+    title: "ALTERNATIVE INVESTMENT FUND (AIF) - CATEGORY III",
+    desc: "SEBI-registered investment vehicle. Access to our differentiated investment strategies. Tax efficient platform.",
+    cta: "Learn About AIF",
+    link: "#",
+    image: "/images/portfolio_2.jpg",
+    layout: "img-right",
+  },
+  {
+    num: "03",
+    title: "GIFT CITY FUND (International)",
+    desc: "Fund domiciled in GIFT City IFSC. Serves global investors and NRIs. Acceptable international structure.",
+    cta: "Explore GIFT Fund",
+    link: "#",
+    image: "/images/portfolio_3.jpg",
+    layout: "img-left",
+  },
+];
+---
+
+<section class="portfolios-section bg-white" id="portfolios">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <h2 class="text-display-2 text-primary">Investment <span class="highlight-green">Portfolios</span></h2>
+    </div>
+
+    <div class="portfolios-list">
+      {
+        portfolios.map((item, index) => (
+          <div class="portfolio-item-container">
+            <div class="portfolio-separator" />
+            <div class={`portfolio-row ${item.layout}`}>
+              <div class="p-col img-col">
+                <div class="img-wrapper">
+                  <img src={item.image} alt={item.title} />
+                </div>
+              </div>
+
+              <div class="p-col content-col">
+                <div class="content-wrapper">
+                  <h3 class="portfolio-title text-primary">{item.title}</h3>
+                  <p class={`portfolio-desc font-secondary ${item.approaches ? 'has-approaches' : ''}`}>{item.desc}</p>
+
+                  {item.approaches && (
+                    <div class="approaches-wrapper">
+                      <span class="approaches-label font-secondary">Available Approaches</span>
+                      <div class="approaches-list">
+                        {item.approaches.map((approach, i) => (
+                          <>
+                            <span class="approach-name font-secondary">{approach}</span>
+                            {i < item.approaches.length - 1 && <span class="approach-sep">|</span>}
+                          </>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <a href={item.link} class="cta-button">
+                    <span class="cta-icon">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                    <span class="cta-text font-secondary">{item.cta}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .portfolios-section {
+    padding: 3rem 0;
+    background: #ffffff;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .text-display-2 {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-weight: 300;
+  }
+
+  .highlight-green {
+    color: #9acb32;
+  }
+
+  .approaches-wrapper {
+    margin-bottom: 2rem;
+  }
+
+  .approaches-label {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #999;
+    margin-bottom: 0.6rem;
+  }
+
+  .approaches-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+  }
+
+  .approach-name {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #333;
+  }
+
+  .approach-sep {
+    color: #bbb;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1;
+    margin: 0 0.5rem;
+  }
+
+  .portfolios-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .portfolio-separator {
+    height: 1px;
+    background-color: #eaeaea;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .portfolio-row {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+
+    @media (max-width: 992px) {
+      flex-direction: column !important;
+      gap: 2rem;
+    }
+  }
+
+  /* Alternating Layout */
+  .portfolio-row.img-left {
+    flex-direction: row;
+  }
+
+  .portfolio-row.img-right {
+    flex-direction: row-reverse;
+  }
+
+  .img-col {
+    flex: 1;
+    width: 50%;
+
+    @media (max-width: 992px) {
+      width: 100%;
+    }
+  }
+
+  .img-wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9; /* Landscape format */
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  .content-col {
+    flex: 1;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+    @media (max-width: 992px) {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+
+  .content-wrapper {
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .offering-num {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    color: #9acb32; /* Lime green from old site */
+  }
+
+  .portfolio-title {
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #111;
+  }
+
+  .portfolio-desc {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    white-space: pre-wrap; /* to support newlines */
+  }
+
+  .portfolio-desc.has-approaches {
+    margin-bottom: 1rem;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    color: #111;
+    transition: all 0.3s ease;
+
+    .cta-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background-color: #75b0e2; /* Blue background */
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      color: #ffffff; /* White arrow */
+    }
+
+    .cta-text {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    &:hover {
+      .cta-icon {
+        background-color: #5a9bd4; /* Darker blue on hover */
+      }
+    }
+  }
+</style>

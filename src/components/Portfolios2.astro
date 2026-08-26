@@ -1,0 +1,196 @@
+---
+const portfolios = [
+  {
+    title: "Portfolio Management Services (PMS)",
+    desc: "Customized equity portfolios managed to specific investment approaches. Direct ownership of securities. Real-time portfolio transparency. Periodic reporting.",
+    label: "OFFERING 01",
+    image: "/images/hero_boutique.jpg",
+    linkText: "EXPLORE PMS",
+    linkUrl: "#"
+  },
+  {
+    title: "Alternative Investment Fund (AIF)",
+    desc: "Category III SEBI-registered investment vehicle. Access to our differentiated investment strategies. Tax efficient platform.",
+    label: "OFFERING 02",
+    image: "/images/hero_growth.jpg",
+    linkText: "LEARN ABOUT AIF",
+    linkUrl: "#"
+  },
+  {
+    title: "GIFT City Fund (International)",
+    desc: "Fund domiciled in GIFT City IFSC. Serves global investors and NRIs. Acceptable international structure.",
+    label: "OFFERING 03",
+    image: "/images/hero_longterm.jpg",
+    linkText: "EXPLORE GIFT FUND",
+    linkUrl: "#"
+  }
+];
+---
+
+<section class="portfolios-2" id="portfolios">
+  <div class="container">
+    <div class="portfolios-stack">
+      {portfolios.map((portfolio, i) => (
+        <div class="split-block reveal-block">
+          <div class={`split-img-col ${i % 2 !== 0 ? 'order-last' : ''}`}>
+            <div class="img-wrapper">
+              <img src={portfolio.image} alt={portfolio.title} />
+            </div>
+          </div>
+          <div class="split-text-col">
+            <div class="text-inner">
+              <span class="label font-secondary">{portfolio.label}</span>
+              <h2 class="title">{portfolio.title}</h2>
+              <p class="desc text-body-large">{portfolio.desc}</p>
+              
+              <a href={portfolio.linkUrl} class="action-btn">
+                <div class="arrow-box">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M10.5858 8.00008H0V6.00008H10.5858L5.99992 1.41421L7.41414 0L14 6.58586V7.41429L7.41429 14L6.00008 12.5858L10.5858 8.00008Z" fill="currentColor"></path></svg>
+                </div>
+                <span class="btn-text font-secondary">{portfolio.linkText}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .portfolios-2 {
+    padding: var(--spacing-section, 8rem) 0;
+    background-color: var(--color-background);
+  }
+
+  .portfolios-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+  }
+
+  .split-block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: stretch;
+
+    @media (min-width: 992px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+    }
+  }
+
+  .split-img-col {
+    width: 100%;
+    
+    &.order-last {
+      @media (min-width: 992px) {
+        order: 2;
+      }
+    }
+  }
+
+  .img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .split-text-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 0;
+  }
+
+  .text-inner {
+    max-width: 500px;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: #888;
+    margin-bottom: 1.5rem;
+  }
+
+  .title {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+  }
+
+  .desc {
+    color: #555;
+    margin-bottom: 3rem;
+  }
+
+  .action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    cursor: pointer;
+    
+    &:hover .arrow-box {
+      background-color: var(--color-secondary-dark);
+      transform: translateX(5px);
+    }
+  }
+
+  .arrow-box {
+    width: 40px;
+    height: 40px;
+    background-color: #E2EDB5; /* Light green tint matching Capital Four reference */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    
+    svg {
+      color: var(--color-primary);
+    }
+  }
+
+  .btn-text {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray('.portfolios-2 .reveal-block').forEach((block: any) => {
+    gsap.from(block, {
+      scrollTrigger: {
+        trigger: block,
+        start: "top 85%",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out"
+    });
+  });
+</script>

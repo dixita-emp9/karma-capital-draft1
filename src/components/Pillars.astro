@@ -1,0 +1,197 @@
+---
+
+---
+
+<section class="pillars-section" id="solutions">
+  <div class="container pillars-container">
+    <div class="pillars-left">
+      <div class="sticky-wrapper">
+        <h2 class="section-title text-primary">
+          Investment Pillars.<br /><span class="text-highlight">
+            Build on Conviction.</span
+          >
+        </h2>
+        <p class="section-subtitle">
+          Our core philosophy driving sustainable alpha generation and robust
+          portfolio construction.
+        </p>
+      </div>
+    </div>
+
+    <div class="pillars-right">
+      <!-- Pillar 1 -->
+      <div class="pillar-content">
+        <div class="pillar-num font-secondary text-secondary">01</div>
+        <h3 class="pillar-title text-primary">Absolute Return Orientation</h3>
+        <p class="pillar-desc font-secondary">
+          We aim to preserve capital while seeking to deliver superior
+          risk-adjusted returns regardless of market conditions. This focus
+          protects portfolios during downturns while capturing upside.
+        </p>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="pillar-content">
+        <div class="pillar-num font-secondary text-secondary">02</div>
+        <h3 class="pillar-title text-primary">Active Management</h3>
+        <p class="pillar-desc font-secondary">
+          A highly active, benchmark-agnostic approach. We construct portfolios
+          based on conviction rather than index weights, allowing us to exploit
+          inefficiencies in the market.
+        </p>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="pillar-content">
+        <div class="pillar-num font-secondary text-secondary">03</div>
+        <h3 class="pillar-title text-primary">Bottom-Up Research</h3>
+        <p class="pillar-desc font-secondary">
+          Rigorous fundamental analysis is the cornerstone of our process. We
+          deeply analyze business models, management quality, and valuations to
+          uncover intrinsic value.
+        </p>
+      </div>
+
+      <!-- Pillar 4 -->
+      <div class="pillar-content">
+        <div class="pillar-num font-secondary text-secondary">04</div>
+        <h3 class="pillar-title text-primary">Long-Term Horizon</h3>
+        <p class="pillar-desc font-secondary">
+          We invest with a multi-year perspective. This allows us to look past
+          short-term volatility and capitalize on the compounding power of
+          high-quality businesses.
+        </p>
+      </div>
+
+      <!-- Pillar 5 -->
+      <div class="pillar-content">
+        <div class="pillar-num font-secondary text-secondary">05</div>
+        <h3 class="pillar-title text-primary">Risk Management</h3>
+        <p class="pillar-desc font-secondary">
+          Embedded throughout the investment process. We focus on margin of
+          safety, portfolio diversification, and continuous monitoring to
+          mitigate downside risks.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .pillars-section {
+    padding: 10rem 0;
+    background-color: var(--color-background);
+  }
+
+  .pillars-container {
+    display: flex;
+    gap: 6rem;
+    position: relative;
+
+    @media (max-width: 992px) {
+      flex-direction: column;
+      gap: 4rem;
+    }
+  }
+
+  .pillars-left {
+    flex: 0 0 35%;
+  }
+
+  .sticky-wrapper {
+    position: sticky;
+    top: 20vh;
+  }
+
+  .section-title {
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+
+    .text-highlight {
+      color: var(--color-secondary-dark); /* Lime green accent */
+    }
+  }
+
+  .section-subtitle {
+    font-size: 1.25rem;
+    color: #555;
+    max-width: 400px;
+    line-height: 1.6;
+  }
+
+  .pillars-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    padding-top: 5vh;
+  }
+
+  .pillar-content {
+    background: transparent;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+
+  .pillar-num {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: #75b0e2; /* Blue */
+  }
+
+  .pillar-title {
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .pillar-desc {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #555;
+    max-width: 600px;
+  }
+
+  @media (max-width: 992px) {
+    .sticky-wrapper {
+      position: relative;
+      top: 0;
+    }
+    .pillars-right {
+      padding-top: 0;
+      gap: 4rem;
+    }
+    .pillar-content {
+      padding-bottom: 3rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray(".pillar-content").forEach((card: any) => {
+    gsap.from(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: "top 85%",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+  });
+</script>

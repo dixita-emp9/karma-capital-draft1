@@ -1,0 +1,197 @@
+---
+const funnelLayers = [
+  {
+    title: "The Mindset",
+    subtitle: "Independent Thinking",
+    desc: "Deviating from the benchmark to capture alpha. Proprietary research uncovers value where the broader market sees ambiguity.",
+    width: "100%",
+    bg: "#eef4f9"
+  },
+  {
+    title: "The Search",
+    subtitle: "Unconstrained Discovery",
+    desc: "A mandate without boundaries. Identifying high-growth leaders early in their cycle to secure a strategic valuation advantage.",
+    width: "85%",
+    bg: "#dceaf5"
+  },
+  {
+    title: "The Execution",
+    subtitle: "Concentrated Conviction",
+    desc: "Quality over quantity. The investment universe is distilled into a focused portfolio of highest-conviction bets, rejecting the safety of over-diversification.",
+    width: "70%",
+    bg: "#cadff0"
+  },
+  {
+    title: "The Horizon",
+    subtitle: "Stability through perspective",
+    desc: "A long-term focus acts as a steadying force, ignoring temporary noise to secure sustainable, multi-cycle compounding.",
+    width: "55%",
+    bg: "#b5d4ec"
+  }
+];
+---
+
+<section class="beliefs-section bg-white">
+  <div class="container">
+    
+    <div class="section-header text-center mb-5">
+      <h2 class="text-display-3 text-primary">Core <span class="text-highlight">Beliefs</span></h2>
+      <p class="section-subtitle font-secondary">A process of elimination - filtering the noisy market down to high conviction ideas.</p>
+    </div>
+
+    <div class="funnel-container">
+      {funnelLayers.map((layer, index) => (
+        <div class="funnel-layer-wrapper">
+          <div class="funnel-layer" style={`width: ${layer.width}; background-color: ${layer.bg};`}>
+            <div class="layer-content">
+              <div class="layer-header">
+                <span class="layer-num font-secondary">0{index + 1}</span>
+                <h3 class="layer-title text-primary">{layer.title}</h3>
+              </div>
+              <p class="layer-subtitle font-secondary"><strong>{layer.subtitle}.</strong> {layer.desc}</p>
+            </div>
+          </div>
+          
+          {index < funnelLayers.length - 1 && (
+            <div class="funnel-connector">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#75b0e2" stroke-width="2">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+              </svg>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style lang="scss">
+  .beliefs-section {
+    padding: 8rem 0;
+    background-color: #ffffff;
+  }
+
+  .text-display-3 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 300;
+  }
+  
+  .text-highlight {
+    color: #9acb32; /* Lime green */
+  }
+
+  .section-subtitle {
+    font-size: 1.25rem;
+    color: #666;
+    margin-top: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mb-5 {
+    margin-bottom: 5rem;
+  }
+
+  /* Funnel Styles */
+  .funnel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .funnel-layer-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .funnel-layer {
+    padding: 2.5rem 3rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+    
+    @media (max-width: 768px) {
+      width: 100% !important; /* Full width on mobile */
+      padding: 2rem 1.5rem;
+    }
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+  }
+
+  .layer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .layer-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .layer-num {
+    font-size: 1rem;
+    color: #75b0e2; /* Blue */
+    font-weight: 600;
+    background: #fff;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .layer-title {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .layer-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #444;
+    margin: 0;
+    max-width: 600px;
+    
+    strong {
+      color: #111;
+      font-weight: 600;
+    }
+  }
+
+  .funnel-connector {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    svg {
+      animation: bounce 2s infinite;
+    }
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(5px);
+    }
+    60% {
+      transform: translateY(3px);
+    }
+  }
+</style>

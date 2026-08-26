@@ -1,0 +1,312 @@
+---
+
+---
+
+<section class="why-karma bg-white" id="about">
+  <div class="wk-pin-container">
+    <div class="wk-horizontal-scroll">
+      <!-- Panel 1: Title & Intro -->
+      <div class="wk-panel wk-intro">
+        <div class="intro-content">
+          <h2 class="section-title">
+            Different by Design.<br /><span class="text-highlight"
+              >Aligned by Principles.</span>
+          </h2>
+          <p class="section-subtitle font-secondary">
+            A specialist boutique defined by core pillars of belief.
+          </p>
+          <div class="scroll-indicator font-secondary">
+            <span>Scroll to explore</span>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 2: Principle 1 -->
+      <div class="wk-panel wk-card-panel">
+        <div class="wk-card">
+          <div class="wk-card-img">
+            <img src="/images/independent-asset-manager.jpg" alt="Independent Asset Manager" />
+          </div>
+          <div class="wk-card-body">
+            <div class="wk-card-header">
+              <span class="wk-num font-secondary">01</span>
+              <h3>Independent Asset Manager</h3>
+            </div>
+            <p class="font-secondary">
+              Free from institutional conflicts. With no proprietary trading or
+              ancillary business lines, the sole focus is the fiduciary duty of
+              managing discretionary capital.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 3: Principle 2 -->
+      <div class="wk-panel wk-card-panel">
+        <div class="wk-card">
+          <div class="wk-card-img">
+            <img src="/images/proven-resilience.jpg" alt="Proven Resilience" />
+          </div>
+          <div class="wk-card-body">
+            <div class="wk-card-header">
+              <span class="wk-num font-secondary">02</span>
+              <h3>Proven Resilience</h3>
+            </div>
+            <p class="font-secondary">
+              Demonstrated capability across two decades of market cycles. Since
+              2005, the firm has navigated volatility with a consistent
+              philosophy, delivering superior risk adjusted returns through
+              every market phase.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 4: Principle 3 -->
+      <div class="wk-panel wk-card-panel">
+        <div class="wk-card">
+          <div class="wk-card-img">
+            <img src="/images/early-cycle.jpg" alt="The Early Cycle Edge" />
+          </div>
+          <div class="wk-card-body">
+            <div class="wk-card-header">
+              <span class="wk-num font-secondary">03</span>
+              <h3>The 'Early Cycle' Edge</h3>
+            </div>
+            <p class="font-secondary">
+              High active share strategies designed to generate alpha. Rigorous
+              bottom-up research identifies mispriced opportunities early,
+              distinguishing the portfolio from the broader benchmark.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spacer panel to add breathing room at the end -->
+      <div class="wk-panel wk-spacer"></div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .why-karma {
+    background-color: #ffffff;
+    color: var(--color-primary);
+    overflow: hidden;
+  }
+
+  .wk-global-header {
+    text-align: center;
+    padding-top: 2.5rem;
+    position: relative; /* Change from absolute to relative to create natural space */
+    width: 100%;
+    z-index: 10;
+    margin-bottom: 0;
+  }
+
+  .wk-pin-container {
+    height: calc(
+      100vh - 150px
+    ); /* Adjust height since header is now relative */
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .wk-horizontal-scroll {
+    display: flex;
+    height: 100%;
+    padding: 0 5vw;
+  }
+
+  .wk-panel {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .wk-intro {
+    width: 40vw;
+    padding-right: 4rem;
+
+    .intro-content {
+      max-width: 500px;
+    }
+  }
+
+  .section-title {
+    font-size: 4rem;
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    color: #1c2229;
+  }
+
+  .text-highlight {
+    color: var(--color-secondary-dark); /* Lime green */
+  }
+
+  .section-subtitle {
+    font-size: 1.25rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 4rem;
+  }
+
+  .scroll-indicator {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    color: #888;
+
+    .line {
+      width: 50px;
+      height: 1px;
+      background: #ccc;
+    }
+  }
+
+  .wk-card-panel {
+    width: 35vw; /* Adjust width of cards */
+    padding: 0 2rem;
+  }
+
+  .wk-card {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    height: 65vh; /* Fixed height for uniformity */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wk-card-img {
+    height: 45%;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .wk-card-body {
+    padding: 2.5rem 0 0 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wk-card-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    h3 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      line-height: 1.3;
+      margin: 0;
+      color: #1c2229;
+    }
+  }
+
+  .wk-num {
+    font-size: 2rem;
+    font-weight: 300;
+    color: #75b0e2; /* Blue */
+  }
+
+  .wk-card-body p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #666;
+    margin: 0;
+  }
+
+  .wk-spacer {
+    width: 10vw; /* End spacer */
+  }
+
+  /* Disable horizontal scroll on mobile and stack naturally */
+  @media (max-width: 992px) {
+    .why-karma {
+      padding: 6rem 0;
+    }
+
+    .wk-pin-container {
+      height: auto;
+      display: block;
+    }
+
+    .wk-horizontal-scroll {
+      height: auto;
+      flex-direction: column;
+      padding: 0 2rem;
+    }
+
+    .wk-panel {
+      height: auto;
+      width: 100%;
+      padding: 0;
+      margin-bottom: 3rem;
+    }
+
+    .wk-intro {
+      margin-bottom: 4rem;
+      padding-right: 0;
+    }
+
+    .wk-card {
+      height: auto;
+
+      .wk-card-img {
+        height: 250px;
+      }
+    }
+
+    .scroll-indicator {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Only apply horizontal scroll on desktop
+  let mm = gsap.matchMedia();
+
+  mm.add("(min-width: 993px)", () => {
+    let scrollContainer = document.querySelector(
+      ".wk-horizontal-scroll",
+    ) as HTMLElement;
+
+    if (scrollContainer) {
+      gsap.to(scrollContainer, {
+        x: () => -(scrollContainer.scrollWidth - window.innerWidth),
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".why-karma",
+          pin: true,
+          scrub: 1,
+          end: () => "+=" + (scrollContainer.scrollWidth - window.innerWidth),
+          invalidateOnRefresh: true,
+        },
+      });
+    }
+  });
+</script>

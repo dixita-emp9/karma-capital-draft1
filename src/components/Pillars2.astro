@@ -1,0 +1,170 @@
+---
+const pillars = [
+  {
+    num: "01",
+    title: "GARP Style",
+    desc: "Growth potential evaluated against stringent valuation metrices. We invest in companies where earnings power justifies current price, with reasonable margin of safety."
+  },
+  {
+    num: "02",
+    title: "Early Cycle",
+    desc: "Identify companies at business inflection points before market consensus and narratives. Focus on catalysts and visible signs of growth."
+  },
+  {
+    num: "03",
+    title: "Rate of Change",
+    desc: "Invest where growth accelerates, ROE improves, or market segments expand. Capture returns from earnings acceleration combined with multiple rerating."
+  },
+  {
+    num: "04",
+    title: "Independent Thinking",
+    desc: "Deep in-house research enables contrarian positioning. We invest where our analysis identifies value that consensus has overlooked."
+  },
+  {
+    num: "05",
+    title: "Concentrated Portfolio",
+    desc: "Benchmark agnostic 20-25 high-conviction holdings. High active share."
+  }
+];
+---
+
+<section class="pillars-2" id="solutions">
+  <div class="container">
+    <div class="pillars-grid">
+      
+      <div class="label-col">
+        <div class="border-top"></div>
+        <div class="label-wrapper">
+          <span class="label-text">FIVE INVESTMENT PILLARS</span>
+        </div>
+      </div>
+      
+      <div class="list-col">
+        <div class="border-top"></div>
+        <div class="pillars-list">
+          {pillars.map((pillar) => (
+            <div class="pillar-item reveal-item">
+              <div class="pillar-content">
+                <span class="pillar-num font-secondary">{pillar.num}</span>
+                <h3 class="pillar-title">{pillar.title}</h3>
+                <p class="pillar-desc text-body-large">{pillar.desc}</p>
+              </div>
+              <div class="pillar-line"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .pillars-2 {
+    padding: var(--spacing-section, 8rem) 0;
+    background-color: var(--color-background);
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+
+    @media (min-width: 992px) {
+      grid-template-columns: 1fr 3fr;
+      gap: 2rem;
+    }
+  }
+
+  .border-top {
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+
+  .label-text {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-light);
+    color: #888; /* Override light color for visibility on light bg */
+  }
+
+  .pillars-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pillar-item {
+    position: relative;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .pillar-content {
+    max-width: 800px;
+  }
+
+  .pillar-num {
+    font-size: 1rem;
+    color: var(--color-secondary-dark);
+    display: block;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .pillar-title {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 300;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .pillar-desc {
+    color: #555;
+  }
+
+  .pillar-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  /* Remove bottom line for the last item */
+  .pillar-item:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    
+    .pillar-line {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray('.pillars-2 .reveal-item').forEach((item: any) => {
+    gsap.fromTo(item,
+      { y: 30, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 90%",
+        }
+      }
+    );
+  });
+</script>

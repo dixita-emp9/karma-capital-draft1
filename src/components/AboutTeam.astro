@@ -1,0 +1,255 @@
+---
+const founders = [
+  {
+    name: "Rushabh Sheth",
+    title: "Co-Founder & Co-CIO",
+    desc: "Rushabh is a veteran of the Indian markets with over 28 years of experience. Before founding Karma, he served as CIO at Kotak Mutual Fund, where he steered an 8-fold growth in assets.",
+    edge: "He doesn't just manage the firm; he actively manages the portfolios, ensuring the \"bottom-up\" philosophy he pioneered remains the firm's bedrock.",
+    image: "/images/placeholder_founder1.jpg"
+  },
+  {
+    name: "Nikhil Desai",
+    title: "Co-Founder & Co-CIO",
+    desc: "With 29 years of experience, Nikhil brings a blend of domestic depth and global best practices. Formerly the Head of Equity Assets at ABN AMRO Bank (Private Banking), he played a pivotal role in aligning Indian portfolio management with global standards.",
+    edge: "An MBA top-honors graduate from Virginia Tech, Nikhil combines academic rigor with the street-smart resilience required to navigate market cycles.",
+    image: "/images/placeholder_founder2.jpg"
+  }
+];
+
+const ceo = {
+  name: "Praveen Ladia",
+  title: "Chief Executive Officer",
+  subtitle: "The Architect of Scale",
+  desc: "Great investment strategies need robust platforms to reach the world. Praveen brings over 20 years of experience in scaling asset management firms from the ground up.",
+  edge: "Known for high-impact growth, he previously witnessed a 40x asset expansion at Motilal Oswal Asset Management to USD 5 Billion. At Karma, he drives product strategy, distribution, and the operational excellence that institutional investors demand.",
+  image: "/images/placeholder_ceo.jpg"
+};
+---
+
+<section class="team-section bg-light">
+  <div class="container">
+    
+    <div class="section-header text-center mb-5">
+      <h2 class="text-display-3 text-primary">The <span class="text-highlight">Investment Core</span></h2>
+      <p class="section-subtitle font-secondary">Custodians of the Philosophy</p>
+    </div>
+
+    <!-- Part 1: Founders -->
+    <div class="founders-grid">
+      {founders.map(founder => (
+        <div class="team-card">
+          <div class="team-img-wrapper">
+            <img src={founder.image} alt={founder.name} class="placeholder-bg" />
+          </div>
+          <div class="team-content">
+            <h3 class="team-name text-primary">{founder.name}</h3>
+            <p class="team-title text-accent">{founder.title}</p>
+            <p class="team-desc font-secondary">{founder.desc}</p>
+            <div class="team-edge">
+              <strong>The Edge:</strong> {founder.edge}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Part 2: CEO -->
+    <div class="ceo-section">
+      <div class="ceo-card">
+        <div class="ceo-img-wrapper">
+          <img src={ceo.image} alt={ceo.name} class="placeholder-bg" />
+        </div>
+        <div class="ceo-content">
+          <h3 class="team-name text-primary">{ceo.name}</h3>
+          <p class="team-title text-accent">{ceo.title} <span class="title-separator">|</span> <span class="subtitle">{ceo.subtitle}</span></p>
+          <p class="team-desc font-secondary">{ceo.desc}</p>
+          <div class="team-edge">
+            <strong>The Edge:</strong> {ceo.edge}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style lang="scss">
+  .team-section {
+    padding: 8rem 0;
+    background-color: #f7f9fa; /* Light gray to distinguish from overview */
+  }
+
+  .text-display-3 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 300;
+  }
+  
+  .text-highlight {
+    color: #9acb32; /* Lime green */
+  }
+
+  .text-accent {
+    color: #75b0e2; /* Blue */
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.25rem;
+    color: #666;
+    margin-top: 1rem;
+  }
+
+  .mb-5 {
+    margin-bottom: 4rem;
+  }
+
+  .section-divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    width: 100%;
+    margin: 5rem 0;
+  }
+
+  /* Founders Grid */
+  .founders-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .team-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .team-img-wrapper {
+    width: 100%;
+    height: 400px;
+    background-color: #e0e0e0;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Fallback if image not found */
+    .placeholder-bg {
+      background-color: #e0e0e0;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0), linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0);
+        background-size: 20px 20px;
+        background-position: 0 0, 10px 10px;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .team-content {
+    padding: 2.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .team-name {
+    font-size: 2rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 400;
+  }
+
+  .team-desc {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+
+  .team-edge {
+    margin-top: auto;
+    padding: 1.5rem;
+    background-color: #f4f8fb;
+    border-left: 4px solid #75b0e2;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444;
+    border-radius: 0 4px 4px 0;
+    
+    strong {
+      color: #111;
+      font-weight: 600;
+    }
+  }
+
+  /* CEO Section */
+  .ceo-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: 992px) {
+      flex-direction: column;
+    }
+  }
+
+  .ceo-img-wrapper {
+    flex: 1;
+    min-height: 400px;
+    background-color: #e0e0e0;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .ceo-content {
+    flex: 2;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media (max-width: 992px) {
+      padding: 2.5rem;
+    }
+  }
+
+  .title-separator {
+    color: #ccc;
+    margin: 0 0.5rem;
+  }
+
+  .subtitle {
+    color: #666;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+</style>

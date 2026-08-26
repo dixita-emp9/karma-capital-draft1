@@ -1,0 +1,192 @@
+---
+const attributes = [
+  {
+    title: "Boutique",
+    desc: "A investment management firm, distinct from the financial supermarket model. The mandate is strictly focused on actively managed Indian equities, utilizing deep fundamental research to identify companies."
+  },
+  {
+    title: "Independent",
+    desc: "The firm remains employee-owned and founder-led. This ensures interests are fully aligned with the investor, free from external pressure and driven purely by investment discipline."
+  },
+  {
+    title: "Disciplined",
+    desc: "The investment philosophy is reinforced by rigorous execution and a process-driven culture across the organization."
+  },
+  {
+    title: "Pedigree",
+    desc: "Established track record of building differentiated, high-conviction portfolios with high active share."
+  }
+];
+---
+
+<section class="overview-section bg-white">
+  <div class="container">
+    
+    <!-- Intro Statement -->
+    <div class="intro-statement">
+      <p class="text-display-3 text-primary">
+        For over 20 years, we've refined a process that helps us identify early-stage growth companies across market cycles. Remaining independent has allowed us to invest with true agility, flexibility and unbiased conviction. Today, our seasoned fund-management team and long-standing integrity have earned the trust of some of the world's most respected institutions.
+      </p>
+    </div>
+    
+    <div class="section-divider"></div>
+    
+    <!-- Firm Overview -->
+    <div class="firm-overview">
+      <div class="row">
+        <div class="col-title">
+          <h2 class="text-display-3 text-primary">Firm Overview</h2>
+        </div>
+        <div class="col-content">
+          <p class="font-secondary">
+            A specialist investment boutique dedicated exclusively to listed Indian equities, with the independence to think differently and invest without institutional constraints or conflicts.
+          </p>
+          <p class="font-secondary">
+            Our investment philosophy is rooted in disciplined, bottom-up fundamental research. We look beyond market noise and short-term sentiment to understand the intrinsic value and long-term potential of businesses.
+          </p>
+          <p class="font-secondary">
+            Through deep research and high-conviction investing, we seek to identify businesses with durable competitive advantages and strong fundamentals, building focused portfolios designed to compound capital over the long term and through market cycles.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section-divider"></div>
+    
+    <!-- About Karma Capital Grid -->
+    <div class="about-grid-section">
+      <h2 class="text-display-3 text-primary text-center mb-5">About <span class="text-highlight">Karma Capital</span></h2>
+      
+      <div class="attributes-grid">
+        {attributes.map((attr, index) => (
+          <div class="attribute-card">
+            <div class="attr-header">
+              <span class="attr-num font-secondary">0{index + 1}</span>
+              <h3 class="attr-title text-primary">{attr.title}</h3>
+            </div>
+            <p class="attr-desc font-secondary">{attr.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style lang="scss">
+  .overview-section {
+    padding: 8rem 0;
+    background-color: #ffffff;
+  }
+  
+  .text-display-3 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 300;
+    line-height: 1.3;
+  }
+  
+  .text-highlight {
+    color: #9acb32; /* Lime green */
+  }
+
+  .intro-statement {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    
+    p {
+      color: #333;
+    }
+  }
+
+  .section-divider {
+    height: 1px;
+    background-color: #eaeaea;
+    width: 100%;
+    margin: 5rem 0;
+  }
+
+  .firm-overview {
+    .row {
+      display: flex;
+      gap: 4rem;
+      
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+    
+    .col-title {
+      flex: 1;
+    }
+    
+    .col-content {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      
+      p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+      }
+    }
+  }
+
+  .about-grid-section {
+    .mb-5 {
+      margin-bottom: 4rem;
+    }
+  }
+
+  .attributes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .attribute-card {
+    padding: 2.5rem;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+  }
+
+  .attr-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .attr-num {
+    font-size: 1.25rem;
+    color: #75b0e2; /* Blue */
+    font-weight: 500;
+  }
+
+  .attr-title {
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .attr-desc {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #666;
+    margin: 0;
+  }
+</style>

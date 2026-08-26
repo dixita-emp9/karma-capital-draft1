@@ -1,0 +1,407 @@
+---
+const slides = [
+  {
+    title: "Two Decades of",
+    highlight: "Disciplined Growth",
+    subtitle: "We are leading specialists rooted in the Indian market. We provide alternatives through innovative solutions for our clients' unique needs.",
+    image: "/images/hero_growth.webp"
+  },
+  {
+    title: "Building True",
+    highlight: "Long-Term Value",
+    subtitle: "Focusing on sustainable businesses with strong moats to generate superior risk-adjusted returns over the investment horizon.",
+    image: "/images/hero_longterm.webp"
+  },
+  {
+    title: "An Independent",
+    highlight: "Specialist Boutique",
+    subtitle: "Free from institutional conflicts, our sole focus is on our fiduciary duty of managing discretionary capital for our partners.",
+    image: "/images/hero_boutique.jpg"
+  }
+];
+---
+
+<section class="hero-section" id="start">
+  
+  <div class="slider-container">
+    {slides.map((slide, index) => (
+      <div class={`slide ${index === 0 ? 'active' : ''}`} data-index={index}>
+        <div class="hero-parallax-wrapper">
+          <div class="hero-bg" style={`background-image: url('${slide.image}');`}></div>
+          <div class="hero-overlay"></div>
+        </div>
+        
+        <div class="container hero-content">
+          <div class="hero-content-inner">
+            <h1 class="hero-title text-display-1">
+              <span class="line"><span class="line-inner">{slide.title}</span></span>
+              <span class="line"><span class="line-inner text-highlight">{slide.highlight}</span></span>
+            </h1>
+            
+            <div class="content-block">
+              <p class="hero-subtitle text-body-large">{slide.subtitle}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Bottom Navigation UI -->
+  <div class="hero-ui">
+    <div class="container ui-container">
+      
+      <!-- Progress Bar (Left) -->
+      <div class="progress-container">
+        <div class="progress-numbers">
+          <span class="current-slide">01</span>
+          <span class="total-slides">/ 03</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Arrows (Edges) -->
+  <button class="nav-btn prev-btn edge-btn" aria-label="Previous Slide">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="nav-btn next-btn edge-btn" aria-label="Next Slide">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</section>
+
+<style lang="scss">
+  .hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Align middle */
+  }
+
+  .slider-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Align middle */
+    
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      
+      .hero-bg {
+        transform: scale(1);
+      }
+      
+      .line-inner {
+        transform: translateY(0);
+        transition-delay: 0.2s;
+      }
+      
+      .hero-subtitle {
+        opacity: 0.9;
+        transform: translateY(0);
+        transition-delay: 0.6s;
+      }
+    }
+  }
+
+  .hero-parallax-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.05);
+    transition: transform 8s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    width: 100%;
+  }
+
+  .hero-content-inner {
+    margin: 0 0 0 auto; /* Push to the right side */
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Text aligned to left */
+    text-align: left;
+  }
+
+  .hero-title {
+    margin-bottom: 2rem;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.1;
+    font-weight: 300;
+    
+    .line {
+      display: block;
+      overflow: hidden;
+      padding-bottom: 0.2em; 
+      margin-bottom: -0.2em;
+    }
+    
+    .line-inner {
+      display: block;
+      transform: translateY(110%);
+      transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+  }
+
+  .content-block {
+    width: 80%;
+    min-width: 300px;
+  }
+
+  .hero-subtitle {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+    font-weight: 300;
+    line-height: 1.6;
+    font-size: clamp(1.1rem, 1.25vw, 1.3rem);
+  }
+
+  /* Bottom UI */
+  .hero-ui {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    padding-bottom: 3rem;
+  }
+
+  .ui-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .progress-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .progress-numbers {
+    color: white;
+    font-family: var(--font-secondary);
+    font-size: 0.9rem;
+    
+    .current-slide {
+      font-weight: 500;
+    }
+    .total-slides {
+      color: rgba(255,255,255,0.5);
+    }
+  }
+
+  .progress-bar {
+    width: 250px;
+    height: 2px;
+    background: rgba(255,255,255,0.2);
+    position: relative;
+  }
+
+  .progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: white;
+    /* GSAP will animate this */
+  }
+
+  .nav-arrows {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: transparent;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: white;
+      color: #1C2229;
+    }
+  }
+
+  .edge-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 60px;
+    height: 60px;
+    background: rgba(0,0,0,0.2);
+    border-color: rgba(255,255,255,0.1);
+  }
+  
+  .prev-btn.edge-btn {
+    left: 2rem;
+  }
+  
+  .next-btn.edge-btn {
+    right: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .content-block {
+      width: 100%;
+    }
+    .progress-bar {
+      width: 100px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Parallax effect on scroll
+  gsap.utils.toArray('.hero-parallax-wrapper').forEach((wrapper: any) => {
+    gsap.to(wrapper, {
+      y: () => window.innerHeight,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero-section",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+        invalidateOnRefresh: true
+      }
+    });
+  });
+
+  // Slider Logic with Animated Progress Bar
+  const slides = document.querySelectorAll('.slide');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  const currentSlideText = document.querySelector('.current-slide');
+  const progressFill = document.querySelector('.progress-fill');
+  
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+  const slideDuration = 6; // seconds
+  let progressAnimation: any = null;
+
+  function updateSlider() {
+    slides.forEach((slide, index) => {
+      if (index === currentIndex) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+    
+    if (currentSlideText) {
+      currentSlideText.textContent = `0${currentIndex + 1}`;
+    }
+  }
+
+  function startProgress() {
+    if (progressAnimation) {
+      progressAnimation.kill();
+    }
+    
+    if (progressFill) {
+      gsap.set(progressFill, { width: '0%' });
+      progressAnimation = gsap.to(progressFill, {
+        width: '100%',
+        duration: slideDuration,
+        ease: 'none',
+        onComplete: nextSlide
+      });
+    }
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlider();
+    startProgress();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlider();
+    startProgress();
+  }
+
+  // Initialize
+  if (slides.length > 0) {
+    updateSlider();
+    
+    // Slight delay to allow entrance animation to play before timer starts
+    setTimeout(() => {
+      startProgress();
+    }, 1000);
+    
+    nextBtn?.addEventListener('click', () => {
+      nextSlide();
+    });
+    
+    prevBtn?.addEventListener('click', () => {
+      prevSlide();
+    });
+  }
+</script>

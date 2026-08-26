@@ -1,0 +1,164 @@
+---
+---
+
+<header class="site-header">
+  <div class="container header-container">
+    
+    <div class="logo">
+      <a href="/">
+        <img src="/Karma Capital-White.png" alt="Karma Capital" class="logo-img" style="filter: invert(1);" />
+      </a>
+    </div>
+    
+    <nav class="main-nav font-secondary">
+      <ul>
+        <li><a href="/">Home</a></li>
+        
+        <li class="has-dropdown">
+          <a href="#">About <span class="dropdown-arrow">▼</span></a>
+          <ul class="dropdown">
+            <li><a href="#">Investment Philosophy</a></li>
+          </ul>
+        </li>
+        
+        <li class="has-dropdown">
+          <a href="#">Investment Solutions <span class="dropdown-arrow">▼</span></a>
+          <ul class="dropdown">
+            <li><a href="#">Portfolio Management Services (PMS)</a></li>
+            <li><a href="#">PMS Page</a></li>
+            <li><a href="#">Alternative Investment Funds (AIF)</a></li>
+          </ul>
+        </li>
+        
+        <li class="has-dropdown">
+          <a href="#">Insights <span class="dropdown-arrow">▼</span></a>
+          <ul class="dropdown">
+            <li><a href="#">News</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Investor Resources</a></li>
+        <li><a href="#">Gift City</a></li>
+      </ul>
+    </nav>
+    
+  </div>
+</header>
+
+<style lang="scss">
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1.5rem 0;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 102;
+  }
+
+  .logo-img {
+    height: 45px;
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .main-nav {
+    > ul {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      
+      > li {
+        position: relative;
+        
+        > a {
+          color: #000000;
+          font-weight: 500;
+          font-size: 0.85rem;
+          text-transform: capitalize;
+          position: relative;
+          transition: color 0.3s;
+          padding: 1rem 0;
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+          
+          &:hover {
+            color: #9acb32; /* Lime green */
+          }
+        }
+      }
+    }
+    
+    .dropdown-arrow {
+      font-size: 0.6rem;
+      opacity: 0.6;
+    }
+    
+    .has-dropdown {
+      &:hover {
+        .dropdown {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+      }
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      min-width: 260px;
+      list-style: none;
+      padding: 1rem 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-radius: 4px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 200;
+      
+      li {
+        a {
+          display: block;
+          padding: 0.6rem 1.5rem;
+          color: #333333;
+          font-size: 0.85rem;
+          text-decoration: none;
+          transition: all 0.2s ease;
+          
+          &:hover {
+            color: #9acb32;
+            background: rgba(154, 203, 50, 0.05);
+            padding-left: 1.8rem;
+          }
+        }
+      }
+    }
+    
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
+</style>

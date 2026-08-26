@@ -1,0 +1,113 @@
+---
+import { gsap } from 'gsap';
+---
+
+<section class="mission-statement" data-bgcolor="#ffffff">
+  <div class="container">
+    <div class="mission-grid">
+      <div class="mission-label-col">
+        <div class="border-top"></div>
+        <div class="label-wrapper">
+          <span class="label-text">OUR INVESTMENT PHILOSOPHY</span>
+        </div>
+      </div>
+      <div class="mission-content-col">
+        <div class="border-top"></div>
+        <h2 class="mission-heading reveal-text">
+          We succeed when our investments generate positive change and financial value.
+        </h2>
+        <div class="mission-body">
+          <p class="reveal-text">
+            Value creation in our investment portfolios is driven by a rigorous bottom-up, team-focused investment process.
+          </p>
+          <p class="reveal-text">
+            It is our belief that fundamental research and a well-designed process lead to superior long-term performance for us, our investors, and the companies we partner with.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .mission-statement {
+    padding: var(--spacing-section) 0;
+    background-color: var(--color-bg);
+  }
+
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+
+    @media (min-width: 992px) {
+      grid-template-columns: 1fr 3fr;
+      gap: 2rem;
+    }
+  }
+
+  .border-top {
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+
+  .label-text {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-light);
+  }
+
+  .mission-heading {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    font-weight: 300;
+    color: var(--color-text);
+    margin-bottom: 3rem;
+    max-width: 900px;
+  }
+
+  .mission-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+
+    p {
+      font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+      line-height: 1.5;
+      font-weight: 300;
+      color: var(--color-text-light);
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const missionSection = document.querySelector('.mission-statement');
+  if (missionSection) {
+    const revealTexts = missionSection.querySelectorAll('.reveal-text');
+    
+    revealTexts.forEach((text) => {
+      gsap.fromTo(text, 
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: text,
+            start: "top 85%",
+          }
+        }
+      );
+    });
+  }
+</script>
