@@ -1,0 +1,169 @@
+---
+---
+
+<section class="hero-section" id="start">
+  
+  <div class="hero-parallax-wrapper">
+    <div class="hero-bg" style="background-image: url('/images/hero_boutique.jpg');"></div>
+    <div class="hero-overlay"></div>
+  </div>
+  
+  <div class="container hero-content">
+    <div class="hero-content-inner">
+      <h1 class="hero-title text-display-1">
+        <span class="line"><span class="line-inner">Stability That Protects.</span></span>
+        <span class="line"><span class="line-inner text-highlight">Turnaround That Performs.</span></span>
+      </h1>
+      
+      <div class="content-block">
+        <p class="hero-subtitle text-body-large">A large-cap-biased portfolio combining established, resilient businesses with carefully selected turnaround opportunities.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<style lang="scss">
+  .hero-section {
+    position: relative;
+    height: 100vh; /* Full viewport height like the home page */
+    width: 100vw;
+    overflow: hidden;
+    background-color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Align middle */
+  }
+
+  .hero-parallax-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.05);
+    animation: scaleDownBg 8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%); 
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    width: 100%;
+    margin-top: 100px; /* Offset for the header to visually center the text */
+  }
+
+  .hero-content-inner {
+    margin: 0 0 0 auto; /* Push to the right side */
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Text aligned to left */
+    text-align: left;
+  }
+
+  .hero-title {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: clamp(2.5rem, 5.5vw, 5.5rem);
+    line-height: 1.1;
+    font-weight: 300;
+    
+    .line {
+      display: block;
+      overflow: hidden;
+      padding-bottom: 0.2em; 
+      margin-bottom: -0.2em;
+    }
+    
+    .line-inner {
+      display: block;
+      transform: translateY(110%);
+      animation: revealUp 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+      animation-delay: 0.2s;
+    }
+  }
+
+  .content-block {
+    width: 90%;
+    min-width: 300px;
+  }
+
+  .hero-subtitle {
+    margin: 0;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    animation-delay: 0.6s;
+    font-weight: 300;
+    line-height: 1.6;
+    font-size: clamp(1.1rem, 1.25vw, 1.3rem);
+  }
+
+  @keyframes scaleDownBg {
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes revealUp {
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 0.9;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-block {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Parallax effect on scroll
+  gsap.utils.toArray('.hero-parallax-wrapper').forEach((wrapper: any) => {
+    gsap.to(wrapper, {
+      y: () => window.innerHeight,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero-section",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+        invalidateOnRefresh: true
+      }
+    });
+  });
+</script>

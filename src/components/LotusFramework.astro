@@ -1,0 +1,155 @@
+---
+---
+<section class="framework-section bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-left">
+        <h2 class="section-title">The Discipline of Discovery</h2>
+        <p class="font-secondary intro-text">
+          Small and mid-cap businesses can offer significant opportunities for investors willing to look beyond the consensus. Our approach is built on rigorous, bottom-up research designed to uncover emerging businesses with the potential to compound earnings well ahead of market expectations.
+        </p>
+        <p class="font-secondary intro-text" style="margin-top: 1rem;">
+          Differentiated outcomes come from insight, patience, and disciplined conviction.
+        </p>
+      </div>
+      
+      <div class="col-right">
+        <div class="architecture-list">
+          <div class="architecture-item">
+            <div class="item-number font-secondary">01</div>
+            <div class="item-content">
+              <h4>Under-Researched Advantage</h4>
+              <p class="font-secondary">Target inefficiencies in smaller companies that receive limited analyst and institutional coverage - where information asymmetry creates mispricing and early entry opportunities.</p>
+            </div>
+          </div>
+          
+          <div class="architecture-item">
+            <div class="item-number font-secondary">02</div>
+            <div class="item-content">
+              <h4>High-Conviction Allocation</h4>
+              <p class="font-secondary">Build a portfolio where individual stock selection is a meaningful driver of returns, while maintaining prudent diversification to manage the inherent volatility of the small and mid-cap universe.</p>
+            </div>
+          </div>
+          
+          <div class="architecture-item">
+            <div class="item-number font-secondary">03</div>
+            <div class="item-content">
+              <h4>Sector-Agnostic Approach</h4>
+              <p class="font-secondary">Opportunity is not confined to a single sector or theme. The strategy actively search across industries for businesses with compelling fundamentals, structural growth potential, and attractive risk-reward characteristics. Sector exposure is driven by opportunity and not predetermined constraints.</p>
+            </div>
+          </div>
+
+          <div class="architecture-item">
+            <div class="item-number font-secondary">04</div>
+            <div class="item-content">
+              <h4>Long-Term Lens</h4>
+              <p class="font-secondary">Invest with a multi-year horizon, allowing businesses time to execute, scale, and compound. The focus is on participating in the full evolution of an investment thesis rather than reacting to short-term market movements.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .framework-section {
+    padding: 8rem 0;
+    background-color: #ffffff;
+  }
+  
+  .row {
+    display: flex;
+    gap: 6rem;
+    
+    @media (max-width: 992px) {
+      flex-direction: column;
+      gap: 3rem;
+    }
+  }
+  
+  .col-left {
+    flex: 1;
+    max-width: 450px;
+    position: sticky;
+    top: 120px;
+    align-self: flex-start;
+    
+    @media (max-width: 992px) {
+      max-width: 100%;
+      position: relative;
+      top: 0;
+    }
+  }
+  
+  .col-right {
+    flex: 1.5;
+  }
+  
+  .section-title {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .intro-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    margin: 0;
+  }
+  
+  .architecture-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .architecture-item {
+    display: flex;
+    gap: 2.5rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    
+    &:first-child {
+      padding-top: 0;
+    }
+    
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    
+    @media (max-width: 576px) {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 2rem 0;
+    }
+  }
+  
+  .item-number {
+    font-size: 2rem !important;
+    font-weight: 300 !important;
+    color: #75b0e2 !important;
+    margin-top: -0.2rem;
+  }
+  
+  .item-content {
+    h4 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: #001b3a;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #666;
+      margin: 0;
+    }
+  }
+</style>

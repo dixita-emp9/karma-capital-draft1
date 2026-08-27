@@ -1,0 +1,184 @@
+---
+---
+<section class="selection-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="header-left">
+        <h2 class="text-display-3 text-primary">What we look for</h2>
+      </div>
+      <div class="header-right">
+        <p class="font-secondary intro-text">
+          Seek emerging small and mid-cap businesses with the potential to deliver sustained earnings growth as they scale and strengthen their competitive position. Invest when fundamental inflection, long-term growth potential, and valuation converge and the opportunity to participate early in the journey of tomorrow's market leaders.
+        </p>
+      </div>
+    </div>
+
+    <div class="features-row">
+      <div class="feature-item">
+        <div class="item-number">01</div>
+        <h4 class="feature-title">Emerging Leaders</h4>
+        <p class="feature-text font-secondary">Invest early in businesses with the potential to evolve into tomorrow's mid- and large-cap leaders. The approach seeks to capture the full journey from accelerating earnings and business scale-up to the potential for broader market recognition.</p>
+      </div>
+      <div class="feature-item">
+        <div class="item-number">02</div>
+        <h4 class="feature-title">Financial Strength & Capital Discipline</h4>
+        <p class="feature-text font-secondary">Favor businesses with strong cash-flow generation, prudent leverage, efficient capital allocation, and sustainable pricing power.</p>
+      </div>
+      <div class="feature-item">
+        <div class="item-number">03</div>
+        <h4 class="feature-title">Management Alignment</h4>
+        <p class="feature-text font-secondary">Long-term vision, and a demonstrated ability to execute and scale the business responsibly. Alignment of interests and integrity are fundamental to the investment process.</p>
+      </div>
+      <div class="feature-item">
+        <div class="item-number">04</div>
+        <h4 class="feature-title">Valuation Discipline</h4>
+        <p class="feature-text font-secondary">Deploy capital only when intrinsic value provides an appropriate margin of safety, using disciplined and dynamic valuation frameworks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .selection-section {
+    padding: 8rem 0;
+    background-color: #f8f9fa;
+  }
+  
+  .section-header {
+    display: flex;
+    gap: 4rem;
+    margin-bottom: 5rem;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  .header-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .header-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .text-display-3 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+  }
+
+  .intro-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #555;
+    margin: 0;
+  }
+
+  .features-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    padding-top: 2rem;
+    
+    @media (max-width: 992px) {
+      flex-direction: column;
+      gap: 4rem;
+    }
+  }
+
+  .feature-item {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .item-number {
+    font-size: 5rem; /* Huge numbers */
+    font-weight: 300;
+    line-height: 1;
+    color: #75b0e2 !important; /* Blue to match other numbers */
+    margin-bottom: 1.5rem;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .feature-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .feature-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #666;
+    margin: 0;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Initialize animations once the DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    const featureItems = gsap.utils.toArray('.selection-section .feature-item');
+    
+    let mm = gsap.matchMedia();
+
+    // Desktop animation (Pinned sequential reveal)
+    mm.add("(min-width: 993px)", () => {
+      gsap.set(featureItems, { opacity: 0, y: 50 });
+      
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".selection-section",
+          start: "center center", 
+          end: "+=1500", // slightly longer for 4 items
+          pin: true,
+          scrub: 1, 
+        }
+      });
+
+      tl.to(featureItems[0], { opacity: 1, y: 0, duration: 1 })
+        .to({}, { duration: 0.2 }) 
+        .to(featureItems[1], { opacity: 1, y: 0, duration: 1 })
+        .to({}, { duration: 0.2 }) 
+        .to(featureItems[2], { opacity: 1, y: 0, duration: 1 })
+        .to({}, { duration: 0.2 }) 
+        .to(featureItems[3], { opacity: 1, y: 0, duration: 1 })
+        .to({}, { duration: 0.5 });
+    });
+
+    // Mobile animation (Simple scroll-up reveal)
+    mm.add("(max-width: 992px)", () => {
+      featureItems.forEach(item => {
+        gsap.fromTo(item, 
+          { opacity: 0, y: 50 },
+          {
+            scrollTrigger: {
+              trigger: item as Element,
+              start: "top 85%",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out"
+          }
+        );
+      });
+    });
+  });
+</script>
+<!-- Trigger HMR -->

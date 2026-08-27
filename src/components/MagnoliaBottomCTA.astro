@@ -1,0 +1,205 @@
+---
+---
+<section class="bottom-cta-section bg-white">
+  <div class="container">
+    
+    <div class="cta-block boxed-cta">
+      <div class="row align-center">
+        <div class="col-half">
+          <h3 class="cta-heading">Unlock the Potential of Large-Cap Investing.</h3>
+        </div>
+        <div class="col-half right-content">
+          <p class="cta-text font-secondary">
+            Access the full strategy document to understand the "Early Cycle" framework and current positioning.
+          </p>
+          <a href="#" class="btn-arrow-link">
+            <span class="icon-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+            <span class="link-text">DOWNLOAD MAGNOLIA BROCHURE</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section-divider"></div>
+
+    <div class="cta-block">
+      <div class="centered-content">
+        <p class="disclosure-text font-secondary">
+          <strong>Regulatory Disclosure:</strong> Karma Capital Portfolio Management Services (PMS) are investment products subject to market risks.
+        </p>
+      </div>
+    </div>
+
+    <div class="centered-content">
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="cta-block">
+      <div class="centered-content">
+        <p class="cta-text font-secondary">
+          <strong>A Legacy of Consistency.</strong> Backed by 20 year track record and a disciplined bottom-up process that results in low churn and high active share.
+        </p>
+        <p class="contact-info font-secondary">
+          [Contact Investment Team: <a href="mailto:marketing@karmacapital.co.in">marketing@karmacapital.co.in</a>] +91-22-6232-7200
+        </p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<style lang="scss">
+  .bottom-cta-section {
+    padding: 6rem 0;
+    background-color: #ffffff;
+  }
+  
+  .cta-block {
+    padding: 2.5rem 0;
+  }
+
+  .boxed-cta {
+    border: 1px solid #eaeaea;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    border-radius: 0;
+    padding: 4rem;
+    margin-bottom: 4rem;
+    
+    @media (max-width: 768px) {
+      padding: 2rem;
+    }
+  }
+
+  .row {
+    display: flex;
+    gap: 4rem;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+
+  .col-empty {
+    flex: 1;
+  }
+
+  .align-center {
+    align-items: center;
+  }
+
+  .col-left {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+  }
+
+  .col-half {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+  }
+  
+  .right-content {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .col-right {
+    flex: 2 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .centered-content {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-divider {
+    height: 1px;
+    background-color: #eaeaea;
+    width: 100%;
+  }
+  
+  .cta-text, .disclosure-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #555;
+    margin: 0;
+
+    strong {
+      color: #333;
+      font-weight: 600;
+    }
+  }
+
+  .btn-arrow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.25rem;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      background-color: #75b0e2; /* Brand blue */
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    
+    .link-text {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+    }
+    
+    &:hover {
+      .icon-box {
+        background-color: #5a98d0;
+      }
+      .link-text {
+        color: #75b0e2;
+      }
+    }
+  }
+
+  .cta-heading {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 300;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .contact-info {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin: 0;
+    font-weight: 500;
+
+    a {
+      color: #75b0e2; /* Brand blue used in about page */
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+</style>

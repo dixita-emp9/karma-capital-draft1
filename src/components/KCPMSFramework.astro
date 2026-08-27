@@ -1,0 +1,181 @@
+---
+---
+<section class="framework-section bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-left">
+        <h2 class="section-title">Markets Evolves. Leadership shifts. Opportunities rotate.</h2>
+        <p class="font-secondary intro-text">
+          The Karma Wealth Builder strategy is designed to remain agile - never confined to a single market segment or rigid sector allocation. We invest across the breadth of the equity market, with a preference for businesses that are established leaders or emerging leaders within their industries.
+        </p>
+        <p class="font-secondary intro-text" style="margin-top: 1rem;">
+          With the flexibility to move across market-cap segments, the strategy focuses capital where we see the greatest combination of growth potential, business quality, and valuation opportunity.
+        </p>
+      </div>
+      
+      <div class="col-right">
+        <div class="architecture-list">
+          <div class="architecture-item">
+            <div class="item-number font-secondary">01</div>
+            <div class="item-content">
+              <h4>All Cap Flexibility</h4>
+              <p class="font-secondary">Do not invest according to predefined market-cap allocations. Large, mid, and small-cap businesses are considered on their individual merits. Capital is directed toward the opportunities where our conviction is highest and the risk-reward is most compelling.</p>
+            </div>
+          </div>
+          
+          <div class="architecture-item">
+            <div class="item-number font-secondary">02</div>
+            <div class="item-content">
+              <h4>Growth at a Reasonable Price</h4>
+              <p class="font-secondary">Seek businesses capable of delivering durable earnings growth without paying an excessive price for that growth. GARP approach combines rigorous fundamental research with valuation discipline and a strong focus on financial quality.</p>
+            </div>
+          </div>
+          
+          <div class="architecture-item">
+            <div class="item-number font-secondary">03</div>
+            <div class="item-content">
+              <h4>Early Cycle Investing</h4>
+              <p class="font-secondary">We seek to identify and invest in businesses at early inflection points in their growth, transformation or recovery cycles, ahead of broader market recognition.</p>
+            </div>
+          </div>
+
+          <div class="architecture-item">
+            <div class="item-number font-secondary">04</div>
+            <div class="item-content">
+              <h4>High-Conviction. Benchmark agnostic</h4>
+              <p class="font-secondary">Eliminate noise and maintain a focused portfolio of 20–25 businesses. Each position is backed by deep fundamental research, strong business fundamentals, and a clearly defined investment thesis without the constraints of benchmark weights.</p>
+            </div>
+          </div>
+          
+          <div class="architecture-item">
+            <div class="item-number font-secondary">05</div>
+            <div class="item-content">
+              <h4>High Active Share</h4>
+              <p class="font-secondary">Deliberately build differentiated portfolio to maintain high active share, allowing our strongest investment ideas to meaningfully shape outcomes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .framework-section {
+    padding: 8rem 0;
+    background-color: #f8f9fa; /* Very light grey/white background */
+  }
+  
+  .row {
+    display: flex;
+    gap: 6rem;
+    
+    @media (max-width: 992px) {
+      flex-direction: column;
+      gap: 3rem;
+    }
+  }
+  
+  .col-left {
+    flex: 1;
+    max-width: 450px;
+    position: sticky;
+    top: 120px;
+    align-self: flex-start;
+    
+    @media (max-width: 992px) {
+      max-width: 100%;
+      position: relative;
+      top: 0;
+    }
+  }
+  
+  .col-right {
+    flex: 1.5;
+  }
+  
+  .framework-subtitle {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #17a2b8; /* Cyan accent color */
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+  }
+  
+  .section-title {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: #000000; /* Black heading */
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .sub-heading {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .intro-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    margin: 0;
+  }
+  
+  .architecture-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .architecture-item {
+    display: flex;
+    gap: 2.5rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    
+    &:first-child {
+      padding-top: 0;
+    }
+    
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    
+    @media (max-width: 576px) {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 2rem 0;
+    }
+  }
+  
+  .item-number {
+    font-size: 2rem !important;
+    font-weight: 300 !important;
+    color: #75b0e2 !important; /* Blue to match WhyKarma.astro */
+    margin-top: -0.2rem; /* Slight adjustment to align baseline with heading */
+  }
+  
+  .item-content {
+    h4 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: #001b3a;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #666;
+      margin: 0;
+    }
+  }
+</style>

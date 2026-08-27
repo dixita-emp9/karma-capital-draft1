@@ -1,0 +1,185 @@
+---
+---
+<section class="selection-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="header-left">
+        <h2 class="text-display-3">Stock Selection <span style="color: #9acb32;">Focus</span></h2>
+        <h3 class="framework-subtitle">Stability at the Core. Opportunity at the Edges.</h3>
+      </div>
+      <div class="header-right">
+        <p class="font-secondary intro-text">
+          Look for established, high-quality businesses providing a foundation of resilience and sustainable growth and for opportunistic alpha consider selective investments in emerging themes and special situations offering differentiated upside potential.
+        </p>
+      </div>
+    </div>
+
+    <div class="features-row">
+      <div class="feature-item">
+        <div class="item-number">01</div>
+        <h4 class="feature-title">Future Potential</h4>
+        <p class="feature-text font-secondary">Looking forward, not backward focusing on what businesses can become rather than what they have been.</p>
+      </div>
+      <div class="feature-item">
+        <div class="item-number">02</div>
+        <h4 class="feature-title">Unpriced Change</h4>
+        <p class="feature-text font-secondary">Identifying fundamental shifts before they are fully reflected in market expectations.</p>
+      </div>
+      <div class="feature-item">
+        <div class="item-number">03</div>
+        <h4 class="feature-title">Contrarian Conviction</h4>
+        <p class="feature-text font-secondary">Taking differentiated positions when businesses are temporarily mispriced and the market's perception diverges from our fundamental view.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Initialize animations once the DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    const featureItems = gsap.utils.toArray('.selection-section .feature-item');
+    
+    let mm = gsap.matchMedia();
+
+    // Desktop animation (Pinned sequential reveal)
+    mm.add("(min-width: 993px)", () => {
+      gsap.set(featureItems, { opacity: 0, y: 50 });
+      
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".selection-section",
+          start: "center center", 
+          end: "+=1200", 
+          pin: true,
+          scrub: 1, 
+        }
+      });
+
+      tl.to(featureItems[0], { opacity: 1, y: 0, duration: 1 })
+        .to({}, { duration: 0.2 }) 
+        .to(featureItems[1], { opacity: 1, y: 0, duration: 1 })
+        .to({}, { duration: 0.2 }) 
+        .to(featureItems[2], { opacity: 1, y: 0, duration: 1 })
+        .to({}, { duration: 0.5 });
+    });
+
+    // Mobile animation (Simple scroll-up reveal)
+    mm.add("(max-width: 992px)", () => {
+      featureItems.forEach(item => {
+        gsap.fromTo(item, 
+          { opacity: 0, y: 50 },
+          {
+            scrollTrigger: {
+              trigger: item as Element,
+              start: "top 85%",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out"
+          }
+        );
+      });
+    });
+  });
+</script>
+
+<style lang="scss">
+  .selection-section {
+    padding: 8rem 0;
+    background-color: #ffffff; /* White background to match Image 2 */
+    color: #333;
+  }
+  
+  .section-header {
+    display: flex;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  .header-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .header-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .text-display-3 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+  }
+
+  .framework-subtitle {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #555; /* Match other subtext */
+    margin: 0;
+  }
+
+  .intro-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #555;
+    margin: 0;
+  }
+
+  .features-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    padding-top: 2rem;
+    
+    @media (max-width: 992px) {
+      flex-direction: column;
+      gap: 4rem;
+    }
+  }
+
+  .feature-item {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .item-number {
+    font-size: 5rem; /* Huge numbers */
+    font-weight: 300;
+    line-height: 1;
+    color: #75b0e2 !important; /* Blue to match other numbers */
+    margin-bottom: 1.5rem;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .feature-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #1a1a1a; /* Dark blue/black */
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .feature-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #666;
+    margin: 0;
+  }
+</style>
