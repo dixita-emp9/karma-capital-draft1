@@ -2,46 +2,51 @@
 const riskPrinciples = [
   {
     title: "Valuation Discipline",
-    desc: "Maintain strict price sensitivity. Entering at the early stage of a cycle creates a margin of safety and reduces exposure to valuation risk."
+    desc: "Maintain strict price sensitivity. Entering at the early stage of a cycle creates a margin of safety and reduces exposure to valuation risk.",
   },
   {
     title: "Stringent Filters",
-    desc: "Set clear entry standards. Every opportunity is rigorously evaluated for liquidity, management track record, and governance practices."
+    desc: "Set clear entry standards. Every opportunity is rigorously evaluated for liquidity, management track record, and governance practices.",
   },
   {
     title: "Business Resilience",
-    desc: "Prioritize durability. Investments are confined to companies with strong balance sheets and business models designed to withstand volatility."
-  }
+    desc: "Prioritize durability. Investments are confined to companies with strong balance sheets and business models designed to withstand volatility.",
+  },
 ];
 ---
 
 <section class="risk-section bg-light">
   <div class="container">
-    
     <div class="section-header text-center mb-5">
-      <h2 class="text-display-3 text-primary">Risk Conscious</h2>
-      <p class="section-subtitle font-secondary">The Discipline of Exclusion<br />Reducing risk through a structured and deliberate framework of avoidance.</p>
+      <h2 class="text-display-3 text-primary">Risk Conscious...</h2>
+      <p class="section-subtitle font-secondary">
+        The Discipline of Exclusion<br />Reducing risk through a structured and
+        deliberate framework of avoidance.
+      </p>
     </div>
 
     <!-- 3 Principles Grid -->
     <div class="risk-grid">
-      {riskPrinciples.map((principle, index) => (
-        <div class="risk-card">
-          <div class="risk-num font-secondary">0{index + 1}</div>
-          <h3 class="risk-title text-primary">{principle.title}</h3>
-          <p class="risk-desc font-secondary">{principle.desc}</p>
-        </div>
-      ))}
+      {
+        riskPrinciples.map((principle, index) => (
+          <div class="risk-card">
+            <div class="risk-num font-secondary">0{index + 1}</div>
+            <h3 class="risk-title text-primary">{principle.title}</h3>
+            <p class="risk-desc font-secondary">{principle.desc}</p>
+          </div>
+        ))
+      }
     </div>
 
     <!-- The Bottom Line -->
     <div class="bottom-line-callout">
       <h4 class="callout-title font-secondary">The Bottom Line</h4>
       <p class="callout-text text-primary">
-        Capital preservation comes from actively safeguarding portfolio quality, being selective in capital deployment and avoiding risks that are not adequately rewarded.
+        Capital preservation comes from actively safeguarding portfolio quality,
+        being selective in capital deployment and avoiding risks that are not
+        adequately rewarded.
       </p>
     </div>
-
   </div>
 </section>
 
@@ -83,13 +88,13 @@ const riskPrinciples = [
     background: #fff;
     padding: 3rem 2.5rem;
     border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     border-top: 4px solid transparent;
     transition: all 0.3s ease;
 
     &:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
       border-top-color: #9acb32; /* Lime green hover indicator */
     }
   }
@@ -135,7 +140,7 @@ const riskPrinciples = [
       top: 10px;
       left: 30px;
       font-size: 10rem;
-      color: rgba(255,255,255,0.03);
+      color: rgba(255, 255, 255, 0.03);
       font-family: serif;
       line-height: 1;
     }
