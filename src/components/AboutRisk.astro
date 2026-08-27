@@ -2,32 +2,41 @@
 const riskPrinciples = [
   {
     title: "Valuation Discipline",
-    desc: "Maintain strict price sensitivity. Entering at the early stage of a cycle creates a margin of safety and reduces exposure to valuation risk."
+    desc: "Maintain strict price sensitivity. Entering at the early stage of a cycle creates a margin of safety and reduces exposure to valuation risk.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`
   },
   {
     title: "Stringent Filters",
-    desc: "Set clear entry standards. Every opportunity is rigorously evaluated for liquidity, management track record, and governance practices."
+    desc: "Set clear entry standards. Every opportunity is rigorously evaluated for liquidity, management track record, and governance practices.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>`
   },
   {
     title: "Business Resilience",
-    desc: "Prioritize durability. Investments are confined to companies with strong balance sheets and business models designed to withstand volatility."
+    desc: "Prioritize durability. Investments are confined to companies with strong balance sheets and business models designed to withstand volatility.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
   }
 ];
 ---
 
-<section class="risk-section bg-light">
+<section class="risk-section bg-white">
   <div class="container">
     
-    <div class="section-header text-center mb-5">
-      <h2 class="text-display-3 text-primary">Risk Conscious</h2>
-      <p class="section-subtitle font-secondary">The Discipline of Exclusion<br />Reducing risk through a structured and deliberate framework of avoidance.</p>
+    <div class="section-header text-left mb-5 align-top">
+      <div class="row" style="display: flex; gap: 4rem;">
+        <div class="col-title" style="flex: 1;">
+          <h2 class="text-display-3 text-primary" style="margin: 0;">Risk <span style="color: #9acb32;">Conscious</span></h2>
+        </div>
+        <div class="col-desc" style="flex: 2;">
+          <p class="section-subtitle font-secondary" style="margin-top: 0; max-width: none;"><strong>The Discipline of Exclusion</strong><br />Reducing risk through a structured and deliberate framework of avoidance.</p>
+        </div>
+      </div>
     </div>
 
     <!-- 3 Principles Grid -->
     <div class="risk-grid">
       {riskPrinciples.map((principle, index) => (
         <div class="risk-card">
-          <div class="risk-num font-secondary">0{index + 1}</div>
+          <div class="risk-icon" style="color: #75b0e2; margin-bottom: 1.5rem; display: block; line-height: 0;" set:html={principle.icon} />
           <h3 class="risk-title text-primary">{principle.title}</h3>
           <p class="risk-desc font-secondary">{principle.desc}</p>
         </div>
@@ -35,9 +44,8 @@ const riskPrinciples = [
     </div>
 
     <!-- The Bottom Line -->
-    <div class="bottom-line-callout">
-      <h4 class="callout-title font-secondary">The Bottom Line</h4>
-      <p class="callout-text text-primary">
+    <div class="bottom-line-simple">
+      <p class="callout-text-simple text-primary">
         Capital preservation comes from actively safeguarding portfolio quality, being selective in capital deployment and avoiding risks that are not adequately rewarded.
       </p>
     </div>
@@ -48,7 +56,7 @@ const riskPrinciples = [
 <style lang="scss">
   .risk-section {
     padding: 8rem 0;
-    background-color: #f7f9fa; /* Match the team section bg */
+    background-color: #ffffff;
   }
 
   .text-display-3 {
@@ -70,93 +78,54 @@ const riskPrinciples = [
   .risk-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
+    border-top: 1px solid #eaeaea;
     margin-bottom: 5rem;
 
     @media (max-width: 992px) {
       grid-template-columns: 1fr;
-      gap: 2rem;
     }
   }
 
   .risk-card {
-    background: #fff;
-    padding: 3rem 2.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-    border-top: 4px solid transparent;
-    transition: all 0.3s ease;
-
+    padding: 3rem 2rem;
+    border-right: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    transition: background-color 0.3s ease;
+    
+    &:last-child {
+      border-right: none;
+    }
+    
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-      border-top-color: #9acb32; /* Lime green hover indicator */
+      background-color: #f1f2ec;
     }
   }
 
-  .risk-num {
-    font-size: 2.5rem;
-    color: #f0f0f0;
-    font-weight: 600;
-    line-height: 1;
-    margin-bottom: 1rem;
-    transition: color 0.3s ease;
-  }
-
-  .risk-card:hover .risk-num {
-    color: #e0f0cc;
-  }
-
   .risk-title {
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    color: #333;
   }
 
   .risk-desc {
-    font-size: 1.05rem;
-    line-height: 1.7;
+    font-size: 1rem;
+    line-height: 1.6;
     color: #666;
     margin: 0;
   }
 
   /* Bottom Line Callout */
-  .bottom-line-callout {
-    background: linear-gradient(135deg, #1c2229 0%, #2a333d 100%);
-    border-radius: 8px;
-    padding: 4rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-
-    &::before {
-      content: '"';
-      position: absolute;
-      top: 10px;
-      left: 30px;
-      font-size: 10rem;
-      color: rgba(255,255,255,0.03);
-      font-family: serif;
-      line-height: 1;
-    }
+  .bottom-line-simple {
+    padding-top: 0;
+    margin-bottom: 4rem;
   }
 
-  .callout-title {
-    color: #9acb32; /* Lime green */
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 1.5rem;
-  }
-
-  .callout-text {
-    color: #fff !important; /* Override text-primary */
+  .callout-text-simple {
     font-size: clamp(1.2rem, 2vw, 1.8rem);
     font-weight: 300;
     line-height: 1.5;
     margin: 0;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    color: #333;
   }
 </style>

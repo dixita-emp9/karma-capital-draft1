@@ -25,7 +25,7 @@ import heroBoutiqueImg from '../assets/images/hero_boutique.jpg';
 <style lang="scss">
   .about-hero-section {
     position: relative;
-    height: 70vh; /* Slightly shorter than home page hero */
+    height: 100vh;
     width: 100vw;
     overflow: hidden;
     background-color: var(--color-primary);
@@ -72,8 +72,8 @@ import heroBoutiqueImg from '../assets/images/hero_boutique.jpg';
   }
 
   .hero-content-inner {
-    margin: 0;
-    max-width: 800px;
+    margin: 0 0 0 auto;
+    max-width: 700px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -147,7 +147,7 @@ import heroBoutiqueImg from '../assets/images/hero_boutique.jpg';
 
   gsap.utils.toArray('.hero-parallax-wrapper').forEach((wrapper: any) => {
     gsap.to(wrapper, {
-      y: () => window.innerHeight / 2,
+      y: () => window.innerHeight,
       ease: "none",
       scrollTrigger: {
         trigger: ".about-hero-section",

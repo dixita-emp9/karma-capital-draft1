@@ -1,0 +1,191 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import nikhilImg from '../../assets/images/nikhil-desai.jpg';
+---
+
+<Layout>
+  <div class="profile-page">
+
+    <!-- Top Hero Strip -->
+    <div class="profile-hero">
+      <div class="container">
+        <a href="/karma-capital/about#investment-core" class="back-link">← Back to Team</a>
+      </div>
+    </div>
+
+    <!-- Profile Content -->
+    <div class="profile-body">
+      <div class="container">
+        <div class="profile-grid">
+
+          <!-- Left: Photo + Meta -->
+          <div class="profile-left">
+            <div class="profile-img-wrap">
+              <img src={nikhilImg.src} alt="Nikhil Desai" />
+            </div>
+            <div class="profile-meta">
+              <h1 class="profile-name">Nikhil Desai</h1>
+              <p class="profile-title">CO-FOUNDER &amp; CO-CIO</p>
+            </div>
+          </div>
+
+          <!-- Right: Bio -->
+          <div class="profile-right">
+            <div class="bio-section">
+              <p class="bio-text">
+                With 29 years of experience, Nikhil brings a rare combination of domestic depth and global best practices to Karma Capital. He was formerly the Head of Equity Assets at ABN AMRO Bank's Private Banking division, where he played a pivotal role in aligning Indian portfolio management with global institutional standards.
+              </p>
+              <p class="bio-text">
+                Nikhil's investment philosophy marries rigorous fundamental analysis with a deep understanding of behavioral finance. He believes that true edge comes not just from picking the right businesses, but from the discipline to hold them through inevitable periods of market turbulence.
+              </p>
+              <p class="bio-text">
+                His international exposure has been a distinguishing strength — giving the firm insights that pure domestic managers rarely access. This global perspective, combined with ground-level market intelligence, makes Nikhil a uniquely positioned investor in the Indian equity space.
+              </p>
+            </div>
+
+            <div class="the-edge">
+              <span class="edge-label">THE EDGE</span>
+              <p class="edge-text">
+                An MBA top-honors graduate from Virginia Tech, Nikhil combines academic rigor with the street-smart resilience required to navigate market cycles.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</Layout>
+
+<style lang="scss">
+  .profile-page {
+    background-color: #fff;
+    min-height: 100vh;
+  }
+
+  .profile-hero {
+    padding-top: 120px;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #eaeaea;
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+  }
+
+  .back-link {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #9acb32;
+    }
+  }
+
+  .profile-body {
+    padding: 6rem 0 8rem;
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+  }
+
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 6rem;
+    align-items: start;
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .profile-left {
+    position: sticky;
+    top: 120px;
+  }
+
+  .profile-img-wrap {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border: 1px solid #d0d0d0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .profile-name {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 300;
+    color: #1c2229;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+  }
+
+  .profile-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #555;
+  }
+
+  .profile-right {
+    padding-top: 1rem;
+  }
+
+  .bio-section {
+    margin-bottom: 4rem;
+  }
+
+  .bio-text {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: #444;
+    margin-bottom: 1.8rem;
+    font-weight: 300;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .the-edge {
+    border-top: 1px solid #eaeaea;
+    padding-top: 2.5rem;
+  }
+
+  .edge-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #9acb32;
+    margin-bottom: 1.2rem;
+  }
+
+  .edge-text {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #555;
+    font-weight: 300;
+    font-style: italic;
+  }
+</style>

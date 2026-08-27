@@ -24,8 +24,10 @@ const attributes = [
     
     <!-- Intro Statement -->
     <div class="intro-statement">
-      <p class="text-display-3 text-primary">
-        For over 20 years, we've refined a process that helps us identify early-stage growth companies across market cycles. Remaining independent has allowed us to invest with true agility, flexibility and unbiased conviction. Today, our seasoned fund-management team and long-standing integrity have earned the trust of some of the world's most respected institutions.
+      <p class="text-display-3 text-primary scrub-text">
+        <span class="scrub-line">For over 20 years, we've refined a process that helps us identify early-stage growth companies across market cycles.</span>
+        <span class="scrub-line">Remaining independent has allowed us to invest with true agility, flexibility and unbiased conviction.</span>
+        <span class="scrub-line">Today, our seasoned fund-management team and long-standing integrity have earned the trust of some of the world's most respected institutions.</span>
       </p>
     </div>
     
@@ -153,14 +155,13 @@ const attributes = [
   }
 
   .attribute-card {
-    padding: 2.5rem;
-    background-color: #f9f9f9;
-    border-radius: 4px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 2rem 0;
+    border-top: 1px solid #eaeaea;
+    transition: none;
     
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transform: none;
+      box-shadow: none;
     }
   }
 
@@ -190,3 +191,49 @@ const attributes = [
     margin: 0;
   }
 </style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Scrub text effect for intro statement
+  const scrubLines = document.querySelectorAll('.scrub-line');
+  if (scrubLines.length > 0) {
+    // Basic opacity scrub line by line
+    gsap.fromTo(scrubLines, 
+      { opacity: 0.2 },
+      { 
+        opacity: 1,
+        ease: "none",
+        stagger: 0.5,
+        scrollTrigger: {
+          trigger: ".intro-statement",
+          start: "top 80%",
+          end: "bottom 50%",
+          scrub: true
+        }
+      }
+    );
+  }
+
+  // Staggered fade up for About Karma Capital attributes
+  const attrCards = document.querySelectorAll('.attribute-card');
+  if (attrCards.length > 0) {
+    gsap.fromTo(attrCards,
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".about-grid-section",
+          start: "top 75%"
+        }
+      }
+    );
+  }
+</script>

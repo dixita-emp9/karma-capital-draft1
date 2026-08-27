@@ -1,75 +1,52 @@
 ---
-const founders = [
+import rushabhImg from '../assets/images/rushabh-sheth.jpg';
+import nikhilImg from '../assets/images/nikhil-desai.jpg';
+import praveenImg from '../assets/images/praveen-ladia.jpg';
+
+const teamMembers = [
   {
     name: "Rushabh Sheth",
-    title: "Co-Founder & Co-CIO",
-    desc: "Rushabh is a veteran of the Indian markets with over 28 years of experience. Before founding Karma, he served as CIO at Kotak Mutual Fund, where he steered an 8-fold growth in assets.",
-    edge: "He doesn't just manage the firm; he actively manages the portfolios, ensuring the \"bottom-up\" philosophy he pioneered remains the firm's bedrock.",
-    image: "/karma-capital/images/placeholder_founder1.jpg"
+    title: "CO-FOUNDER & CO-CIO",
+    image: rushabhImg.src,
+    slug: "rushabh-sheth"
   },
   {
     name: "Nikhil Desai",
-    title: "Co-Founder & Co-CIO",
-    desc: "With 29 years of experience, Nikhil brings a blend of domestic depth and global best practices. Formerly the Head of Equity Assets at ABN AMRO Bank (Private Banking), he played a pivotal role in aligning Indian portfolio management with global standards.",
-    edge: "An MBA top-honors graduate from Virginia Tech, Nikhil combines academic rigor with the street-smart resilience required to navigate market cycles.",
-    image: "/karma-capital/images/placeholder_founder2.jpg"
+    title: "CO-FOUNDER & CO-CIO",
+    image: nikhilImg.src,
+    slug: "nikhil-desai"
+  },
+  {
+    name: "Praveen Ladia",
+    title: "CHIEF EXECUTIVE OFFICER",
+    subtitle: "The Architect of Scale",
+    image: praveenImg.src,
+    slug: "praveen-ladia"
   }
 ];
-
-const ceo = {
-  name: "Praveen Ladia",
-  title: "Chief Executive Officer",
-  subtitle: "The Architect of Scale",
-  desc: "Great investment strategies need robust platforms to reach the world. Praveen brings over 20 years of experience in scaling asset management firms from the ground up.",
-  edge: "Known for high-impact growth, he previously witnessed a 40x asset expansion at Motilal Oswal Asset Management to USD 5 Billion. At Karma, he drives product strategy, distribution, and the operational excellence that institutional investors demand.",
-  image: "/karma-capital/images/placeholder_ceo.jpg"
-};
 ---
 
-<section class="team-section bg-light">
+<section class="team-section bg-light" id="investment-core">
   <div class="container">
     
     <div class="section-header text-center mb-5">
       <h2 class="text-display-3 text-primary">The <span class="text-highlight">Investment Core</span></h2>
-      <p class="section-subtitle font-secondary">Custodians of the Philosophy</p>
     </div>
 
-    <!-- Part 1: Founders -->
-    <div class="founders-grid">
-      {founders.map(founder => (
+    <!-- Team Grid -->
+    <div class="team-grid">
+      {teamMembers.map(member => (
         <div class="team-card">
           <div class="team-img-wrapper">
-            <img src={founder.image} alt={founder.name} class="placeholder-bg" />
+            <img src={member.image} alt={member.name} class="placeholder-bg" />
           </div>
           <div class="team-content">
-            <h3 class="team-name text-primary">{founder.name}</h3>
-            <p class="team-title text-accent">{founder.title}</p>
-            <p class="team-desc font-secondary">{founder.desc}</p>
-            <div class="team-edge">
-              <strong>The Edge:</strong> {founder.edge}
-            </div>
+            <h3 class="team-name text-primary">{member.name}</h3>
+            <p class="team-title text-accent">{member.title}</p>
+            <a href={`/karma-capital/team/${member.slug}`} class="see-profile-link">SEE PROFILE</a>
           </div>
         </div>
       ))}
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- Part 2: CEO -->
-    <div class="ceo-section">
-      <div class="ceo-card">
-        <div class="ceo-img-wrapper">
-          <img src={ceo.image} alt={ceo.name} class="placeholder-bg" />
-        </div>
-        <div class="ceo-content">
-          <h3 class="team-name text-primary">{ceo.name}</h3>
-          <p class="team-title text-accent">{ceo.title} <span class="title-separator">|</span> <span class="subtitle">{ceo.subtitle}</span></p>
-          <p class="team-desc font-secondary">{ceo.desc}</p>
-          <div class="team-edge">
-            <strong>The Edge:</strong> {ceo.edge}
-          </div>
-        </div>
-      </div>
     </div>
 
   </div>
@@ -79,6 +56,7 @@ const ceo = {
   .team-section {
     padding: 5rem 0;
     background-color: #f7f9fa;
+    scroll-margin-top: 80px; /* Offset for fixed header */
   }
 
   .text-display-3 {
@@ -96,31 +74,18 @@ const ceo = {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .section-subtitle {
-    font-size: 1.25rem;
-    color: #666;
-    margin-top: 1rem;
+    margin-bottom: 2rem;
   }
 
   .mb-5 {
     margin-bottom: 4rem;
   }
 
-  .section-divider {
-    height: 1px;
-    background-color: #e0e0e0;
-    width: 100%;
-    margin: 5rem 0;
-  }
-
-  /* Founders Grid */
-  .founders-grid {
+  /* Team Grid */
+  .team-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 4rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
 
     @media (max-width: 992px) {
       grid-template-columns: 1fr;
@@ -129,10 +94,6 @@ const ceo = {
   }
 
   .team-card {
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -140,9 +101,10 @@ const ceo = {
 
   .team-img-wrapper {
     width: 100%;
-    height: 400px;
+    height: 450px;
     background-color: #e0e0e0;
     overflow: hidden;
+    margin-bottom: 1.5rem;
 
     img {
       width: 100%;
@@ -168,88 +130,31 @@ const ceo = {
   }
 
   .team-content {
-    padding: 2.5rem;
-    flex: 1;
     display: flex;
     flex-direction: column;
+    border-top: 1px solid #333;
+    padding-top: 1.5rem;
   }
 
   .team-name {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin: 0 0 0.5rem 0;
-    font-weight: 400;
+    font-weight: 300;
   }
 
-  .team-desc {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: #555;
-    margin-bottom: 2rem;
-  }
-
-  .team-edge {
+  .see-profile-link {
+    color: #9acb32; /* Lime green */
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
     margin-top: auto;
-    padding: 1.5rem;
-    background-color: #f4f8fb;
-    border-left: 4px solid #75b0e2;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #444;
-    border-radius: 0 4px 4px 0;
     
-    strong {
-      color: #111;
-      font-weight: 600;
+    &:hover {
+      opacity: 0.8;
     }
-  }
-
-  /* CEO Section */
-  .ceo-card {
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: row;
-
-    @media (max-width: 992px) {
-      flex-direction: column;
-    }
-  }
-
-  .ceo-img-wrapper {
-    flex: 1;
-    min-height: 400px;
-    background-color: #e0e0e0;
-    
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  .ceo-content {
-    flex: 2;
-    padding: 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    @media (max-width: 992px) {
-      padding: 2.5rem;
-    }
-  }
-
-  .title-separator {
-    color: #ccc;
-    margin: 0 0.5rem;
-  }
-
-  .subtitle {
-    color: #666;
-    font-weight: 400;
-    text-transform: none;
-    letter-spacing: normal;
   }
 </style>
