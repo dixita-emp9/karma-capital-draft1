@@ -1,22 +1,26 @@
 ---
+import heroGrowthImg from '../assets/images/hero_growth.webp';
+import heroLongtermImg from '../assets/images/hero_longterm.webp';
+import heroBoutiqueImg from '../assets/images/hero_boutique.jpg';
+
 const slides = [
   {
     title: "Two Decades of",
     highlight: "Disciplined Growth",
     subtitle: "We are leading specialists rooted in the Indian market. We provide alternatives through innovative solutions for our clients' unique needs.",
-    image: "/images/hero_growth.webp"
+    image: heroGrowthImg.src
   },
   {
     title: "Building True",
     highlight: "Long-Term Value",
     subtitle: "Focusing on sustainable businesses with strong moats to generate superior risk-adjusted returns over the investment horizon.",
-    image: "/images/hero_longterm.webp"
+    image: heroLongtermImg.src
   },
   {
     title: "An Independent",
     highlight: "Specialist Boutique",
     subtitle: "Free from institutional conflicts, our sole focus is on our fiduciary duty of managing discretionary capital for our partners.",
-    image: "/images/hero_boutique.jpg"
+    image: heroBoutiqueImg.src
   }
 ];
 ---
@@ -303,6 +307,23 @@ const slides = [
   }
 
   @media (max-width: 768px) {
+    .edge-btn {
+      top: auto;
+      bottom: 7rem;
+      transform: none;
+      width: 50px;
+      height: 50px;
+    }
+    .prev-btn.edge-btn {
+      left: 2rem;
+    }
+    .next-btn.edge-btn {
+      left: calc(2rem + 60px);
+      right: auto;
+    }
+  }
+
+  @media (max-width: 768px) {
     .content-block {
       width: 100%;
     }
@@ -331,6 +352,18 @@ const slides = [
         invalidateOnRefresh: true
       }
     });
+  });
+
+  // Fade out UI (Progress Bar & Arrows) on scroll so it doesn't overlap Trust Bar
+  gsap.to('.hero-ui, .edge-btn', {
+    opacity: 0,
+    pointerEvents: "none", // Prevent clicking when hidden
+    scrollTrigger: {
+      trigger: ".hero-section",
+      start: "5% top",
+      end: "20% top",
+      scrub: true
+    }
   });
 
   // Slider Logic with Animated Progress Bar

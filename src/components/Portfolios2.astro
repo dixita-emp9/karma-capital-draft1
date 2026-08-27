@@ -1,10 +1,14 @@
 ---
+import heroBoutiqueImg from '../assets/images/hero_boutique.jpg';
+import heroGrowthImg from '../assets/images/hero_growth.webp';
+import heroLongtermImg from '../assets/images/hero_longterm.webp';
+
 const portfolios = [
   {
     title: "Portfolio Management Services (PMS)",
     desc: "Customized equity portfolios managed to specific investment approaches. Direct ownership of securities. Real-time portfolio transparency. Periodic reporting.",
     label: "OFFERING 01",
-    image: "/images/hero_boutique.jpg",
+    image: heroBoutiqueImg.src,
     linkText: "EXPLORE PMS",
     linkUrl: "#"
   },
@@ -12,7 +16,7 @@ const portfolios = [
     title: "Alternative Investment Fund (AIF)",
     desc: "Category III SEBI-registered investment vehicle. Access to our differentiated investment strategies. Tax efficient platform.",
     label: "OFFERING 02",
-    image: "/images/hero_growth.jpg",
+    image: heroGrowthImg.src,
     linkText: "LEARN ABOUT AIF",
     linkUrl: "#"
   },
@@ -20,7 +24,7 @@ const portfolios = [
     title: "GIFT City Fund (International)",
     desc: "Fund domiciled in GIFT City IFSC. Serves global investors and NRIs. Acceptable international structure.",
     label: "OFFERING 03",
-    image: "/images/hero_longterm.jpg",
+    image: heroLongtermImg.src,
     linkText: "EXPLORE GIFT FUND",
     linkUrl: "#"
   }
@@ -59,14 +63,14 @@ const portfolios = [
 
 <style lang="scss">
   .portfolios-2 {
-    padding: var(--spacing-section, 8rem) 0;
+    padding: 5rem 0;
     background-color: var(--color-background);
   }
 
   .portfolios-stack {
     display: flex;
     flex-direction: column;
-    gap: 8rem;
+    gap: 4rem;
   }
 
   .split-block {

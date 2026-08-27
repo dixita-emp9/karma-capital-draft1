@@ -1,4 +1,8 @@
 ---
+import portfolio1Img from '../assets/images/portfolio_1.jpg';
+import portfolio2Img from '../assets/images/portfolio_2.jpg';
+import portfolio3Img from '../assets/images/portfolio_3.jpg';
+
 const portfolios = [
   {
     num: "01",
@@ -7,7 +11,7 @@ const portfolios = [
     approaches: ["Karma Wealth Builder", "Lotus Strategy", "Magnolia Strategy"],
     cta: "EXPLORE PMS Offerings",
     link: "#",
-    image: "/images/portfolio_1.jpg",
+    image: portfolio1Img.src,
     layout: "img-left",
   },
   {
@@ -16,7 +20,7 @@ const portfolios = [
     desc: "SEBI-registered investment vehicle. Access to our differentiated investment strategies. Tax efficient platform.",
     cta: "Learn About AIF",
     link: "#",
-    image: "/images/portfolio_2.jpg",
+    image: portfolio2Img.src,
     layout: "img-right",
   },
   {
@@ -25,7 +29,7 @@ const portfolios = [
     desc: "Fund domiciled in GIFT City IFSC. Serves global investors and NRIs. Acceptable international structure.",
     cta: "Explore GIFT Fund",
     link: "#",
-    image: "/images/portfolio_3.jpg",
+    image: portfolio3Img.src,
     layout: "img-left",
   },
 ];
@@ -95,13 +99,17 @@ const portfolios = [
 
 <style lang="scss">
   .portfolios-section {
-    padding: 3rem 0;
+    padding: 5rem 0;
     background: #ffffff;
+
+    @media (max-width: 992px) {
+      padding: 3rem 0;
+    }
   }
 
   .section-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem; /* Reduced from 3rem */
   }
 
   .text-display-2 {
@@ -150,7 +158,7 @@ const portfolios = [
   .portfolios-list {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem; /* Tighter than 2rem */
   }
 
   .portfolio-separator {

@@ -1,4 +1,6 @@
 ---
+import logoWhite from '../assets/Karma Capital-White.png';
+const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <footer class="site-footer">
@@ -8,7 +10,9 @@
       <!-- Column 1 -->
       <div class="footer-col brand-col">
         <div class="logo">
-          <img src="/Karma Capital-White.png" alt="Karma Capital" class="logo-img" style="filter: invert(1);" />
+          <a href={baseUrl} aria-label="Karma Capital Home">
+            <img src={logoWhite.src} alt="Karma Capital" class="logo-img" style="filter: invert(1);" />
+          </a>
         </div>
         <p class="tagline font-secondary">Independent thinking. Disciplined research. Enduring wealth.</p>
         <div class="social-links">
@@ -90,6 +94,12 @@
     width: auto;
     margin-bottom: 1.5rem;
     display: block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    &:hover {
+      transform: scale(1.03);
+      opacity: 0.9;
+    }
   }
 
   .tagline {

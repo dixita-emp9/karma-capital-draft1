@@ -1,5 +1,7 @@
 ---
-
+import independentImg from '../assets/images/independent-asset-manager.jpg';
+import provenImg from '../assets/images/proven-resilience.jpg';
+import earlyCycleImg from '../assets/images/early-cycle.jpg';
 ---
 
 <section class="why-karma bg-white" id="about">
@@ -28,7 +30,7 @@
         <div class="wk-card">
           <div class="wk-card-img">
             <img
-              src="/images/independent-asset-manager.jpg"
+              src={independentImg.src}
               alt="Independent Asset Manager"
             />
           </div>
@@ -50,7 +52,7 @@
       <div class="wk-panel wk-card-panel">
         <div class="wk-card">
           <div class="wk-card-img">
-            <img src="/images/proven-resilience.jpg" alt="Proven Resilience" />
+            <img src={provenImg.src} alt="Proven Resilience" />
           </div>
           <div class="wk-card-body">
             <div class="wk-card-header">
@@ -71,7 +73,7 @@
       <div class="wk-panel wk-card-panel">
         <div class="wk-card">
           <div class="wk-card-img">
-            <img src="/images/early-cycle.jpg" alt="The Early Cycle Edge" />
+            <img src={earlyCycleImg.src} alt="The Early Cycle Edge" />
           </div>
           <div class="wk-card-body">
             <div class="wk-card-header">
@@ -110,11 +112,10 @@
   }
 
   .wk-pin-container {
-    height: calc(
-      100vh - 150px
-    ); /* Adjust height since header is now relative */
+    height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: calc(80px + 7rem); /* More top space = less bottom gap before next section */
     position: relative;
   }
 
@@ -125,16 +126,17 @@
   }
 
   .wk-panel {
-    height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Top-align panel content */
     flex-shrink: 0;
   }
 
   .wk-intro {
     width: 40vw;
     padding-right: 4rem;
+    /* No margin-top — top-aligns flush with the card tops */
 
     .intro-content {
       max-width: 500px;
@@ -157,7 +159,7 @@
     font-size: 1.25rem;
     color: #555;
     line-height: 1.6;
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem; /* Reduced from 4rem */
   }
 
   .scroll-indicator {
@@ -239,18 +241,19 @@
   }
 
   .wk-spacer {
-    width: 10vw; /* End spacer */
+    width: 2vw; /* Minimal — just enough to give the last card breathing room */
   }
 
   /* Disable horizontal scroll on mobile and stack naturally */
   @media (max-width: 992px) {
     .why-karma {
-      padding: 6rem 0;
+      padding: 4rem 0; /* Reduced from 6rem */
     }
 
     .wk-pin-container {
       height: auto;
       display: block;
+      padding-top: 0;
     }
 
     .wk-horizontal-scroll {
@@ -264,6 +267,10 @@
       width: 100%;
       padding: 0;
       margin-bottom: 3rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
     .wk-intro {
@@ -279,7 +286,7 @@
       }
     }
 
-    .scroll-indicator {
+    .scroll-indicator, .wk-spacer {
       display: none;
     }
   }
@@ -300,14 +307,33 @@
     ) as HTMLElement;
 
     if (scrollContainer) {
+      // Extra pixels the pin stays active AFTER the last card fully arrives.
+      // The animation is already done, so nothing moves — user just sees the
+      // last card for ~1 scroll length before the section releases upward.
+      const holdDistance = window.innerWidth * 0.4;
+      const animDistance = scrollContainer.scrollWidth - window.innerWidth;
+      const totalDistance = animDistance + holdDistance;
+
+      // 1. Pin the section for animation distance + hold distance
+      //    (no scrub here — this just controls pin duration)
+      ScrollTrigger.create({
+        trigger: ".why-karma",
+        pin: true,
+        start: "top top",
+        end: () => "+=" + totalDistance,
+        invalidateOnRefresh: true,
+      });
+
+      // 2. Drive the horizontal animation at full, consistent speed.
+      //    Ends exactly when the last card is fully visible — no slowdown.
       gsap.to(scrollContainer, {
-        x: () => -(scrollContainer.scrollWidth - window.innerWidth),
+        x: () => -animDistance,
         ease: "none",
         scrollTrigger: {
           trigger: ".why-karma",
-          pin: true,
+          start: "top top",
+          end: () => "+=" + animDistance,
           scrub: 1,
-          end: () => "+=" + (scrollContainer.scrollWidth - window.innerWidth),
           invalidateOnRefresh: true,
         },
       });

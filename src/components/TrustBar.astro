@@ -41,18 +41,18 @@
 
 <style lang="scss">
   .trust-bar {
-    background-color: transparent; /* Changed from white to allow overlap effect */
+    background-color: transparent; 
     position: relative;
     z-index: 10;
-    margin-top: -100px; /* Pull it up to overlap the previous section */
-    padding-bottom: 6rem;
+    margin-top: 0;
+    padding: 2rem 0 4rem; /* Small top, clean bottom */
   }
 
   .metrics-card {
     background-color: #ffffff;
-    border-radius: 0; /* Sharp corners */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); /* Soft drop shadow */
-    padding: 3.5rem 2rem;
+    border-radius: 0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem 2rem; /* Slightly tighter inner padding */
   }
 
   .metrics-row {
@@ -152,9 +152,21 @@
         ease: "power3.out",
         scrollTrigger: {
           trigger: item,
-          start: "top 90%",
+          start: "top 95%",
         }
       }
     );
+  });
+
+  // Parallax overlap effect for the entire card
+  gsap.to('.metrics-card', {
+    y: -100, // Move up by 100px to overlap half of the card
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".trust-bar",
+      start: "top bottom",
+      end: "top 30%",
+      scrub: 1
+    }
   });
 </script>
