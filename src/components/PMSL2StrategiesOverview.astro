@@ -1,0 +1,317 @@
+---
+const strategies = [
+  {
+    id: "wealth-builder",
+    name: "Karma Capital <span class=\"text-highlight\">Wealth</span> Builder PMS",
+    description: "An unconstrained, all cap strategy designed to deliver consistent capital appreciation across market cycles. The mandate retains the flexibility to pivot capital between Large, Mid, and Small Cap segments based on relative valuation and risk-reward dynamics.",
+    structure: [
+      { key: "Style", value: "Long-Only Equity." },
+      { key: "Portfolio", value: "Concentrated high-conviction portfolio (typically 20-25 stocks)." },
+      { key: "Composition", value: "A strategic blend of established market leaders and high-growth emerging companies built on Early Cycle thesis." }
+    ],
+    link: "/kc-pms",
+    ctaText: "View Karma Wealth Builder Strategy",
+    watermark: "W"
+  },
+  {
+    id: "lotus",
+    name: "<span class=\"text-highlight\">Lotus</span> PMS",
+    description: "A high-growth approach focused primarily on the Mid and Small Cap universe. The objective is to identify and invest in early-stage market leaders or unique business opportunities before they are fully discovered by the broader market.",
+    structure: [
+      { key: "Style", value: "Long-Only Mid & Small Cap" },
+      { key: "Portfolio", value: "Curated selection of high-potential businesses with efficient cashflow, clean balance sheets and strong promoter pedigree." },
+      { key: "Risk Framework", value: "Applies a strict 'Survival Filter' to mitigate the inherent volatility of smaller companies, prioritizing liquidity and governance." }
+    ],
+    link: "/lotus-pms",
+    ctaText: "View Lotus Strategy",
+    watermark: "L"
+  },
+  {
+    id: "magnolia",
+    name: "<span class=\"text-highlight\">Magnolia</span> PMS",
+    description: "A strategy with large cap biased approach built to capture the mispriced opportunities in the market. The strategy balances a stable \"core\" with an agile \"satellite\" portfolio to deliver balanced, long term compounding, while actively capturing opportunities that arise during periods of market volatility.",
+    structure: [
+      { key: "Style", value: "Long-Only Large cap biased Multicap" },
+      { key: "Portfolio", value: "Focuses on companies driven by strong domestic demand, Aspirational middle class and financialisation" },
+      { key: "Selection", value: "Prioritizes franchises with strong pricing power and identify businesses going through temporary disruption" }
+    ],
+    link: "/magnolia-pms",
+    ctaText: "View Magnolia Strategy",
+    watermark: "M"
+  }
+];
+---
+
+<section class="strategies-overview bg-white">
+  <div class="container">
+    <div class="section-divider"></div>
+
+    <div class="split-columns-container">
+      {strategies.map((strategy) => (
+        <div class="strategy-panel">
+          
+          <div class="panel-watermark font-secondary">{strategy.watermark}</div>
+          
+          <div class="panel-content">
+            <h3 class="panel-title text-primary" set:html={strategy.name}></h3>
+            <p class="panel-desc font-secondary">{strategy.description}</p>
+            
+            <div class="panel-structure">
+              <h4 class="structure-title font-secondary">Structure:</h4>
+              <ul class="structure-list font-secondary">
+                {strategy.structure.map((item) => (
+                  <li><strong>{item.key}:</strong> {item.value}</li>
+                ))}
+              </ul>
+            </div>
+            
+            <a href={strategy.link} class="cta-button">
+              <span class="cta-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </span>
+              <span class="cta-text font-secondary">{strategy.ctaText}</span>
+            </a>
+          </div>
+          
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style lang="scss">
+  .strategies-overview {
+    padding: 0 0 8rem;
+    background-color: #ffffff;
+  }
+
+  .section-divider {
+    height: 1px;
+    background-color: #eaeaea;
+    width: 100%;
+    margin-bottom: 5rem;
+  }
+
+  .split-columns-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .strategy-panel {
+    position: relative;
+    padding: 5rem 2.5rem;
+    border-right: 1px solid rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    transition: background 0.4s ease;
+    
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    @media (max-width: 1200px) {
+      padding: 4rem 1.5rem;
+      
+      &:first-child { padding-left: 0; }
+      &:last-child { padding-right: 0; }
+    }
+
+    @media (max-width: 992px) {
+      padding: 3rem 0;
+      border-right: none;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  /* Animated top border line */
+  .strategy-panel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #75b0e2; /* Blue top border */
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .strategy-panel:hover {
+    background: #fdfdfd; /* Very subtle highlight */
+    
+    &::after { width: 100%; }
+    
+    .panel-watermark {
+      transform: scale(1.05) translate(-10px, 10px);
+      opacity: 0.05;
+    }
+    
+    .panel-content {
+      transform: translateY(-5px);
+    }
+    
+    /* Change icon background to darker blue on hover */
+    .cta-icon { background-color: #5a9bd4; }
+  }
+
+  .panel-watermark {
+    position: absolute;
+    bottom: -2rem;
+    right: -2rem;
+    font-size: 20rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    opacity: 0.02;
+    z-index: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+  }
+
+  .panel-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.4s ease;
+  }
+
+  .panel-title {
+    font-size: 2rem;
+    font-weight: 300;
+    margin: 0 0 1.5rem;
+    color: #1a1a1a;
+    line-height: 1.2;
+  }
+
+  .panel-desc {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #666;
+    margin: 0 0 1.5rem;
+  }
+
+  .panel-structure {
+    margin-bottom: 3rem;
+    flex-grow: 1;
+  }
+
+  .structure-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 0.5rem;
+  }
+
+  .structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .structure-list li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .structure-list li::before {
+    content: '-';
+    position: absolute;
+    left: 0;
+    color: #75b0e2; /* Blue hyphen */
+    font-weight: bold;
+  }
+
+  .structure-list strong {
+    color: #1a1a1a;
+    font-weight: 500;
+  }
+
+  /* CTA Button Matching Homepage */
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    color: #111;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: auto;
+
+    .cta-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background-color: #75b0e2; /* Default blue */
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      color: #ffffff;
+    }
+
+    .cta-text {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  function initAnimation() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const panels = document.querySelectorAll('.strategy-panel');
+    
+    if (panels.length > 0) {
+      gsap.fromTo(panels, 
+        { y: 50, opacity: 0 },
+        {
+          scrollTrigger: {
+            trigger: '.split-columns-container',
+            start: 'top 85%',
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power3.out',
+          overwrite: "auto"
+        }
+      );
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initAnimation);
+  document.addEventListener('astro:page-load', initAnimation);
+  
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(initAnimation, 100);
+  }
+</script>

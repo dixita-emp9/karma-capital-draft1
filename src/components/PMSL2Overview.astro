@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
       <div class="col-left">
-        <h2 class="section-label font-secondary">PMS overview</h2>
+        <h2 class="text-display-3 text-primary">PMS overview</h2>
       </div>
       <div class="col-right">
         <h3 class="section-title text-primary">Bespoke Capital Management.</h3>
@@ -19,7 +19,7 @@
 
 <style lang="scss">
   .overview-section {
-    padding: 8rem 0;
+    padding: 8rem 0 5rem;
     background-color: #ffffff;
     border-top: 1px solid #eaeaea; /* Light border similar to image */
   }
@@ -43,16 +43,15 @@
     flex: 2;
   }
 
-  .section-label {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin: 0;
+  .text-display-3 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 300;
+    line-height: 1.3;
   }
 
   .section-title {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 400;
     color: #1a1a1a;
     margin-top: 0;
     margin-bottom: 1.5rem;
@@ -61,8 +60,7 @@
   .section-text {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #333; /* Darker grey as in image */
+    color: #555;
     margin: 0;
-    font-weight: 500;
   }
 </style>
